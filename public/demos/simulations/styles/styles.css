@@ -1,0 +1,218 @@
+:root {
+  --surface: #0f1320;
+  --panel: #151a2b;
+  --accent: #8bd3ff;
+  --text: #e8eef7;
+  --muted: #a8b0c2;
+  --ring: rgba(139, 211, 255, 0.35);
+}
+
+/* Pill palette */
+.pill-0 {
+  --pill: #f78c57;
+}
+.pill-1 {
+  --pill: #ffd45a;
+}
+.pill-2 {
+  --pill: #97daed;
+}
+.pill-3 {
+  --pill: #8d6eff;
+}
+.pill-4 {
+  --pill: #ff8e6d;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  height: 100%;
+  font-weight: 500;
+}
+
+/* APPLET CONTAINER */
+.applet-container {
+  aspect-ratio: 16 / 9;
+  width: 100vw;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  background: radial-gradient(
+      62.5vw 36.46vh at 20% 0%,
+      #1b2240 0%,
+      rgba(27, 34, 64, 0) 60%
+    ),
+    radial-gradient(
+      52.08vw 36.46vh at 100% 100%,
+      #11162b 0%,
+      rgba(17, 22, 43, 0) 60%
+    ),
+    var(--surface);
+  box-shadow: 0 1vh 3vw rgba(0, 0, 0, 0.15);
+  position: relative;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 1vh;
+  width: 85%;
+  height: 80%;
+}
+
+.script {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-weight: 800;
+  font-size: calc(1.2vw + 1.2vh);
+  height: 100%;
+}
+.line {
+  color: #fff;
+}
+.line .pill {
+  margin-inline: 0.6vh;
+}
+
+/* Pills (idle) */
+.pill {
+  appearance: none;
+  padding: 0.6vh 1.2vh;
+  border-radius: 1.2vh;
+  font-weight: 900;
+  letter-spacing: 0.02vh;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.06s ease, box-shadow 0.15s ease, background 0.15s ease,
+    color 0.15s ease, border-color 0.15s ease;
+  font-size: inherit;
+  font-family: inherit;
+  position: relative;
+  background: transparent;
+  color: var(--pill);
+  border: 0.25vh dashed color-mix(in oklab, var(--pill), #000 15%);
+  box-shadow: none;
+}
+
+.pill:hover {
+  transform: translateY(-0.1vh);
+}
+.pill:active {
+  transform: translateY(0);
+}
+
+/* Active pill persists until another is clicked */
+.pill.active {
+  background: color-mix(in oklab, var(--pill), #fff 10%);
+  color: #16181d;
+  border: 0.25vh solid color-mix(in oklab, var(--pill), #000 10%);
+  box-shadow: 0 0 0 0.6vh var(--ring);
+  animation: pillPulse 1.25s ease-in-out infinite;
+}
+
+@keyframes pillPulse {
+  0% {
+    box-shadow: 0 0 0 0.6vh var(--ring), 0 0 0 0 rgba(139, 211, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 0.6vh var(--ring),
+      0 0 2.2vh 1.1vh rgba(139, 211, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 0.6vh var(--ring), 0 0 0 0 rgba(139, 211, 255, 0.4);
+  }
+}
+
+/* LARGE SPRITE: remove .viewer style completely; control image directly */
+#viewer {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+#sprite {
+  width: 100%;
+  height: 100%;
+  max-width: 200%;
+  max-height: 200%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  image-rendering: auto;
+  filter: drop-shadow(0 1.2vh 1.6vh rgba(0, 0, 0, 0.25));
+}
+.float {
+  animation: floaty 6.5s ease-in-out infinite;
+}
+@keyframes floaty {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(0.6vh, -1.2vh, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, -1.6vh, 0) rotate(1.2deg);
+  }
+  75% {
+    transform: translate3d(-0.6vh, -1.2vh, 0) rotate(0.2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    animation: none;
+  }
+}
+
+.loading {
+  position: absolute;
+  bottom: 1.2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6vh 1vh;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 1.2vh;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  backdrop-filter: blur(6px);
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  font-size: calc(1.5vw + 1.5vh);
+  max-height: 15%;
+  text-align: center;
+  padding: 0 1vw;
+}
+

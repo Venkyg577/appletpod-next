@@ -15,15 +15,32 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AppletPod — AI-Powered Interactive Learning Studio",
+  title: "AppletPod — Interactive Learning, Built Fast",
   description:
-    "Your curriculum. Interactive applets. 5 days. AI-powered interactive learning applets reviewed by an experienced instructional designer.",
+    "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
   metadataBase: new URL("https://appletpod.com"),
   openGraph: {
-    title: "AppletPod — AI-Powered Interactive Learning Studio",
+    title: "AppletPod — Interactive Learning, Built Fast",
     description:
-      "Your curriculum. Interactive applets. 5 days. Built by a 10-year BYJU'S veteran.",
+      "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
+    url: "https://appletpod.com",
+    siteName: "AppletPod",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AppletPod — Interactive Learning, Built Fast",
+      },
+    ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AppletPod — Interactive Learning, Built Fast",
+    description:
+      "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
+    images: ["/og-image.png"],
   },
 };
 

@@ -34,7 +34,7 @@ export function About() {
           <div className="shrink-0 mx-auto md:mx-0">
             <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-accent/20">
               <Image
-                src="/venky.jpg"
+                src="/ProfilePhoto.jpg"
                 alt="Venkatesh G — AppletPod"
                 width={144}
                 height={144}

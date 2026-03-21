@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -34,10 +35,7 @@ export function Header() {
           href={isHome ? "#" : "/"}
           className="flex items-center gap-2 font-heading text-xl font-bold text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md"
         >
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <circle cx="14" cy="14" r="12" fill="#E87B35" />
-            <circle cx="14" cy="14" r="5" fill="#FFF" />
-          </svg>
+          <Image src="/logo.png" alt="AppletPod" width={28} height={28} priority />
           AppletPod
         </a>
 

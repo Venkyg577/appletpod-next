@@ -34,7 +34,7 @@ export function FinalCta() {
               <div className="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style={{minWidth:'320px',height:'630px'}} />
             */}
             <a
-              href="#"
+              href="https://cal.com/venkatesh.g/30min"
               className="inline-flex items-center justify-center gap-2 w-full h-14 text-base font-medium rounded-lg bg-accent text-white hover:bg-accent-hover cursor-pointer shadow-lg shadow-accent/30 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               Book a Call <MoveRight className="w-5 h-5" />
@@ -43,10 +43,10 @@ export function FinalCta() {
           <p className="mt-6 text-white/40 text-sm">
             Or email directly —{" "}
             <a
-              href="mailto:venky@appletpod.com"
+              href="mailto:Venkatesh@appletpod.com"
               className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors duration-200 cursor-pointer"
             >
-              venky@appletpod.com
+              Venkatesh@appletpod.com
             </a>
           </p>
         </div>

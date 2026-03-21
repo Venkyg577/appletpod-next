@@ -1,18 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#how", label: "How it works" },
   { href: "#proof", label: "Demos" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#pilot", label: "Pilot" },
+  { href: "#pilot", label: "Get Started" },
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -28,7 +31,7 @@ export function Header() {
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a
-          href="#"
+          href={isHome ? "#" : "/"}
           className="flex items-center gap-2 font-heading text-xl font-bold text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md"
         >
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -43,14 +46,14 @@ export function Header() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={isHome ? link.href : `/${link.href}`}
               className="hover:text-charcoal transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm py-1"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#cta"
+            href="https://cal.com/venkatesh.g/30min"
             className="inline-flex items-center justify-center h-10 px-5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             Book a Call
@@ -78,7 +81,7 @@ export function Header() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={isHome ? link.href : `/${link.href}`}
               onClick={() => setIsOpen(false)}
               className="w-full text-center py-3 text-charcoal/70 hover:text-charcoal font-medium transition-colors rounded-lg cursor-pointer"
             >
@@ -86,7 +89,7 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#cta"
+            href="https://cal.com/venkatesh.g/30min"
             onClick={() => setIsOpen(false)}
             className="w-full text-center py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors cursor-pointer mt-1"
           >

@@ -90,10 +90,10 @@ export function Faq() {
         <p className="mt-6 text-sm text-charcoal/45 text-center">
           Can&apos;t find your answer? Email{" "}
           <a
-            href="mailto:venky@appletpod.com"
+            href="mailto:Venkatesh@appletpod.com"
             className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors duration-200 cursor-pointer"
           >
-            venky@appletpod.com
+            Venkatesh@appletpod.com
           </a>{" "}
           — we respond within 24 hours.
         </p>

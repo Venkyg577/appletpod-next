@@ -75,7 +75,7 @@ function Hero() {
               See it in action <ArrowDown className="w-4 h-4" />
             </a>
             <a
-              href="#cta"
+              href="https://cal.com/venkatesh.g/30min"
               className="inline-flex items-center justify-center gap-2 h-14 px-8 text-base font-medium rounded-lg border border-border bg-background hover:bg-muted cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               Book a Call <MoveRight className="w-4 h-4" />

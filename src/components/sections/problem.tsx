@@ -21,8 +21,8 @@ const comparisons = [
     solution: "React code. Works everywhere, offline included. Source files are yours.",
   },
   {
-    problem: "4–8 weeks. $5K–180K. And you still end up with a glorified slide deck.",
-    solution: "1–2 weeks. $2,500–5,000. Modules that students actually interact with.",
+    problem: "Agencies charge $1,500–15,000+ per module. It still takes weeks. You still get a slide deck.",
+    solution: "AppletPod starts at ~$175 per applet. Delivered in 5 days. Students actually interact with it.",
   },
 ];
 

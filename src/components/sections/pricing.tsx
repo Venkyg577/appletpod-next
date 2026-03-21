@@ -54,7 +54,7 @@ const tiers = [
 ];
 
 export function Pricing() {
-  const { isIndia, symbol } = useCurrency();
+  const { isIndia } = useCurrency();
 
   return (
     <section id="pricing" className="py-16 md:py-24 lg:py-28 px-4 md:px-6 lg:px-8">
@@ -172,13 +172,7 @@ export function Pricing() {
         {/* Competitor contrast */}
         <div className="mt-8 text-center">
           <p className="text-sm text-charcoal/45">
-            Agencies charge{" "}
-            <span className="font-semibold text-charcoal/60">$1,500–15,000+ per module</span>
-            {" "}and take weeks. AppletPod starts at{" "}
-            <span className="font-semibold text-accent">
-              {isIndia ? "₹15,000 (~$175)" : "~$175 (₹15,000)"}
-            </span>
-            {" "}and delivers in 5 days.
+            Agencies charge $1,500+ per applet. We start at $175.
           </p>
         </div>
       </motion.div>

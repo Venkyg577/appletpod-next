@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Work_Sans } from "next/font/google";
+import { Outfit, Work_Sans, Inter } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -12,6 +12,12 @@ const workSans = Work_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+});
+
+const inter = Inter({
+  variable: "--font-wordmark",
+  subsets: ["latin"],
+  weight: ["600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.variable} ${workSans.variable} font-body antialiased bg-white text-charcoal`}
+        className={`${outfit.variable} ${workSans.variable} ${inter.variable} font-body antialiased bg-white text-charcoal`}
       >
         {children}
       </body>

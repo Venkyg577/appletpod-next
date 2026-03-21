@@ -33,7 +33,7 @@ export function Header() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a
           href={isHome ? "#" : "/"}
-          className="flex items-center gap-2 font-heading text-xl font-bold text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md"
+          className="flex items-center gap-2 font-wordmark text-xl font-bold text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md"
         >
           <Image src="/logo.png" alt="AppletPod" width={28} height={28} priority />
           AppletPod

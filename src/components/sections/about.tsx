@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import Image from "next/image";
 
 const credentials = ["10+ Years EdTech", "300+ Team Led", "100+ Applets Shipped"];
 
@@ -30,13 +31,16 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {/* Photo placeholder */}
           <div className="shrink-0 mx-auto md:mx-0">
-            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-warm-dark flex items-center justify-center border-4 border-accent/20">
-              {/* Replace with: <Image src="/venky.jpg" alt="Venkatesh G" ... /> */}
-              <svg className="w-12 h-12 text-charcoal/20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-accent/20">
+              <Image
+                src="/venky.jpg"
+                alt="Venkatesh G — AppletPod"
+                width={144}
+                height={144}
+                className="object-cover w-full h-full"
+                priority
+              />
             </div>
           </div>
 

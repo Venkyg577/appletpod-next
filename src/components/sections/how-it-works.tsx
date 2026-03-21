@@ -12,12 +12,12 @@ const steps = [
   {
     num: "02",
     title: "We build. You review.",
-    desc: "AI generates the modules. A human checks the pedagogy. You see drafts early and stay in control.",
+    desc: "AI generates the applets. A human checks the pedagogy. You see drafts early and stay in control.",
   },
   {
     num: "03",
     title: "Ship it.",
-    desc: "Interactive modules that work on any device, plug into any LMS, and belong entirely to you.",
+    desc: "Interactive applets that work on any device, plug into any LMS, and belong entirely to you.",
   },
 ];
 
@@ -36,7 +36,7 @@ export function HowItWorks() {
             How It Works
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-charcoal leading-tight">
-            Your content in. Interactive modules out.
+            Your content in. Interactive applets out.
           </h2>
         </motion.div>
 

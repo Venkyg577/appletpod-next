@@ -7,15 +7,15 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "How fast can you really deliver?",
-    a: "Most modules are delivered within 5 business days. Complex simulations with custom logic may take 7–10 days. We'll give you a realistic timeline upfront — no surprises.",
+    a: "Most applets are delivered within 5 business days. Complex simulations with custom logic may take 7–10 days. We'll give you a realistic timeline upfront — no surprises.",
   },
   {
     q: "What if I don't have polished content — just rough notes?",
     a: "That's fine. Most clients send us raw curriculum — slides, textbooks, even recordings. We extract the learning objectives and figure out what should become interactive.",
   },
   {
-    q: "Do the modules work with our LMS?",
-    a: "Yes. Every module is SCORM-compatible and works with any modern LMS — Canvas, Moodle, Blackboard, Docebo, you name it. They also work standalone on any device, including offline.",
+    q: "Do the applets work with our LMS?",
+    a: "Yes. Every applet is SCORM-compatible and works with any modern LMS — Canvas, Moodle, Blackboard, Docebo, you name it. They also work standalone on any device, including offline.",
   },
   {
     q: "What if I need changes after delivery?",
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How is this different from hiring a freelancer on Upwork?",
-    a: "Freelancers build from templates. We build custom from your curriculum. Every module is reviewed by an experienced instructional designer — not just a developer checking if the code runs. And we deliver in days, not weeks.",
+    a: "Freelancers build from templates. We build custom from your curriculum. Every applet is reviewed by an experienced instructional designer — not just a developer checking if the code runs. And we deliver in days, not weeks.",
   },
 ];
 

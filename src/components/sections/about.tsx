@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-const credentials = ["10+ Years EdTech", "300+ Team Led", "100+ Modules Shipped"];
+const credentials = ["10+ Years EdTech", "300+ Team Led", "100+ Applets Shipped"];
 
 export function About() {
   return (

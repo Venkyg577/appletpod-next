@@ -20,7 +20,7 @@ export function FinalCta() {
           Your curriculum deserves better than slides.
         </h2>
         <p className="mt-6 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
-          Send your content. Get back interactive modules that actually teach.
+          Send your content. Get back interactive applets that actually teach.
           Five days.
         </p>
 

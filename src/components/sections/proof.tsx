@@ -164,7 +164,7 @@ export function Proof() {
                 Don&apos;t take our word for it. Try it.
               </h2>
               <p className="mt-4 text-charcoal/45 text-sm max-w-lg mx-auto">
-                Not a demo. These are real modules built from static curriculum documents. Each took under 24 hours.
+                Not a demo. These are real applets built from static curriculum documents. Each took under 24 hours.
               </p>
             </div>
           }
@@ -182,7 +182,7 @@ export function Proof() {
         >
           <div className="p-6">
             <AnimatedCounter target={100} suffix="+" />
-            <p className="mt-3 text-sm text-charcoal/50 font-medium">Interactive modules shipped</p>
+            <p className="mt-3 text-sm text-charcoal/50 font-medium">Interactive applets shipped</p>
           </div>
           <div className="p-6 border-y sm:border-y-0 sm:border-x border-warm-dark">
             <AnimatedCounter target={10} suffix=" yrs" />

@@ -6,7 +6,7 @@ const principles = [
   {
     num: "01",
     title: "AI builds it. A human checks it teaches.",
-    desc: "The AI handles code, layouts, interactions. A 10-year education veteran reviews every module before it ships.",
+    desc: "The AI handles code, layouts, interactions. A 10-year education veteran reviews every applet before it ships.",
   },
   {
     num: "02",
@@ -21,7 +21,7 @@ const principles = [
   {
     num: "04",
     title: "Your content. Not a template.",
-    desc: "We don't have a gallery you pick from. Every module starts from your curriculum, your objectives.",
+    desc: "We don't have a gallery you pick from. Every applet starts from your curriculum, your objectives.",
   },
   {
     num: "05",

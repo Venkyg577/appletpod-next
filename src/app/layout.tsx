@@ -17,12 +17,12 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: "AppletPod — AI-Powered Interactive Learning Studio",
   description:
-    "Your curriculum. Interactive modules. 5 days. AI-powered interactive learning modules reviewed by an experienced instructional designer.",
+    "Your curriculum. Interactive applets. 5 days. AI-powered interactive learning applets reviewed by an experienced instructional designer.",
   metadataBase: new URL("https://appletpod.com"),
   openGraph: {
     title: "AppletPod — AI-Powered Interactive Learning Studio",
     description:
-      "Your curriculum. Interactive modules. 5 days. Built by a 10-year BYJU'S veteran.",
+      "Your curriculum. Interactive applets. 5 days. Built by a 10-year BYJU'S veteran.",
     type: "website",
   },
 };

@@ -7,7 +7,7 @@ import { MoveRight, ArrowDown } from "lucide-react";
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["simulations", "scenarios", "exercises", "assessments", "modules"],
+    () => ["simulations", "scenarios", "exercises", "assessments", "applets"],
     []
   );
 
@@ -28,7 +28,7 @@ function Hero() {
         <div className="flex gap-8 pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 items-center justify-center flex-col">
           <div>
             <span className="inline-flex items-center gap-2 rounded-lg bg-warm px-3 py-1.5 text-sm text-charcoal/60 font-medium">
-              100+ interactive modules shipped
+              100+ interactive applets shipped
               <span className="text-accent font-semibold">&middot;</span>
               Built by a 10-year BYJU&apos;S veteran
             </span>

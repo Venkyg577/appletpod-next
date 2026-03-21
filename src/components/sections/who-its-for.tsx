@@ -7,12 +7,12 @@ const audiences = [
   {
     icon: GraduationCap,
     title: "Universities & Colleges",
-    desc: "STEM, nursing, science programs that need to digitize curriculum. Your faculty knows the subject. We build the modules they can't.",
+    desc: "STEM, nursing, science programs that need to digitize curriculum. Your faculty knows the subject. We build the applets they can't.",
   },
   {
     icon: Zap,
     title: "EdTech Startups",
-    desc: "Content is your product. You need production-quality interactive modules, not slide decks. Fast iterations as your curriculum evolves.",
+    desc: "Content is your product. You need production-quality interactive applets, not slide decks. Fast iterations as your curriculum evolves.",
   },
   {
     icon: Heart,

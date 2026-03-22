@@ -2,10 +2,24 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+async function loadFont(): Promise<ArrayBuffer> {
+  try {
+    // Works on Netlify/Vercel with bundled assets
+    const res = await fetch(
+      new URL("../../../../public/fonts/TiemposHeadline-Bold.ttf", import.meta.url)
+    );
+    return res.arrayBuffer();
+  } catch {
+    // Fallback for local dev
+    const buf = await readFile(
+      join(process.cwd(), "public", "fonts", "TiemposHeadline-Bold.ttf")
+    );
+    return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
+  }
+}
+
 export async function GET() {
-  const tiemposBold = await readFile(
-    join(process.cwd(), "Tiempos-Font/TiemposHeadline-Bold.ttf")
-  );
+  const fontData = await loadFont();
 
   return new ImageResponse(
     (
@@ -21,39 +35,16 @@ export async function GET() {
           color: "#FFFFFF",
         }}
       >
-        {/* Logo + AppletPod */}
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          {/* Logo icon */}
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 100 100"
-            fill="none"
-          >
-            <rect x="5" y="5" width="38" height="38" rx="6" fill="#E87B35" />
-            <rect x="57" y="5" width="38" height="38" rx="6" fill="#E87B35" />
-            <rect x="5" y="57" width="38" height="38" rx="6" fill="#E87B35" />
-            <rect x="62" y="20" width="8" height="28" rx="4" fill="#E87B35" />
-            <rect
-              x="53"
-              y="29"
-              width="8"
-              height="28"
-              rx="4"
-              fill="#E87B35"
-              transform="rotate(-90 53 29)"
-            />
-          </svg>
-          <span
-            style={{
-              fontSize: "56px",
-              fontFamily: "Tiempos",
-              fontWeight: 700,
-              color: "#E87B35",
-            }}
-          >
-            AppletPod
-          </span>
+        {/* AppletPod */}
+        <div
+          style={{
+            fontSize: "56px",
+            fontFamily: "Tiempos",
+            fontWeight: 700,
+            color: "#E87B35",
+          }}
+        >
+          AppletPod
         </div>
 
         {/* Divider */}
@@ -62,12 +53,11 @@ export async function GET() {
             width: "100%",
             height: "2px",
             backgroundColor: "rgba(255,255,255,0.2)",
-            marginTop: "-20px",
           }}
         />
 
         {/* Tagline */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "-40px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div
             style={{
               fontSize: "64px",
@@ -84,11 +74,12 @@ export async function GET() {
               fontSize: "28px",
               color: "rgba(255,255,255,0.6)",
               lineHeight: 1.5,
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            Turn your curriculum into interactive applets.
-            <br />
-            AI-powered, human-reviewed. Starting at $175/applet.
+            <span>Turn your curriculum into interactive applets.</span>
+            <span>AI-powered, human-reviewed. Starting at $175/applet.</span>
           </div>
         </div>
 
@@ -110,7 +101,7 @@ export async function GET() {
       fonts: [
         {
           name: "Tiempos",
-          data: tiemposBold,
+          data: fontData,
           weight: 700,
           style: "normal",
         },

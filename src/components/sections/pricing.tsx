@@ -83,14 +83,12 @@ export function Pricing() {
           {tiers.map((tier) => (
             <Card
               key={tier.name}
-              className={`p-7 flex flex-col ${tier.isPrimary ? "ring-2 ring-accent" : ""}`}
+              className={`p-7 flex flex-col relative overflow-visible ${tier.isPrimary ? "border-2 border-accent" : ""}`}
             >
               {tier.isPrimary && (
-                <div className="mb-4">
-                  <span className="inline-block text-[0.6875rem] font-semibold tracking-[0.05em] uppercase px-2 py-1 rounded bg-accent-light text-accent">
-                    Most popular
-                  </span>
-                </div>
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block text-[0.6875rem] font-semibold tracking-[0.05em] uppercase px-2 py-1 rounded bg-accent-light text-accent whitespace-nowrap">
+                  Most popular
+                </span>
               )}
 
               <h3 className="text-xl font-heading font-bold text-charcoal mb-2">{tier.name}</h3>

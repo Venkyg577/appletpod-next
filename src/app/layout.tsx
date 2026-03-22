@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Outfit, Work_Sans, Inter } from "next/font/google";
+import { Outfit, Work_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -14,10 +15,11 @@ const workSans = Work_Sans({
   weight: ["300", "400", "500", "600"],
 });
 
-const inter = Inter({
+const tiempos = localFont({
+  src: "../../Tiempos-Font/TiemposHeadline-Bold.otf",
   variable: "--font-wordmark",
-  subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: "700",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "AppletPod",
     images: [
       {
-        url: "/og-image.png",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "AppletPod — Interactive Learning, Built Fast",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
     title: "AppletPod — Interactive Learning, Built Fast",
     description:
       "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
-    images: ["/og-image.png"],
+    images: ["/api/og"],
   },
 };
 
@@ -58,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.variable} ${workSans.variable} ${inter.variable} font-body antialiased bg-white text-charcoal`}
+        className={`${outfit.variable} ${workSans.variable} ${tiempos.variable} font-body antialiased bg-white text-charcoal`}
       >
         {children}
       </body>

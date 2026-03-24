@@ -6,7 +6,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/30">
         <p className="flex items-center gap-2">
           <Image src="/logo.png" alt="AppletPod" width={16} height={16} />
-          AppletPod — AI-Powered Interactive Learning Studio
+          AppletPod
         </p>
         <div className="flex items-center gap-5">
           <a
@@ -22,7 +22,7 @@ export function Footer() {
             Terms of Service
           </a>
         </div>
-        <p>&copy; 2026 AppletPod</p>
+        <p>&copy; 2026 VAMIX Technologies Pvt Ltd</p>
       </div>
     </footer>
   );

@@ -1,0 +1,104 @@
+---
+title: "AI Won't Fix Bad Learning Design"
+slug: "ai-wont-fix-bad-learning-design"
+description: "Everyone's adding AI to their EdTech products. But slapping a chatbot onto broken courseware doesn't make it effective. Here's what actually matters."
+author: "Venky Golisetti"
+datePublished: "2026-03-24"
+dateModified: "2026-03-24"
+cluster: "2-ai-edtech"
+pillar: false
+freshnessType: "evergreen"
+keywords: ["AI in education", "EdTech AI", "learning design", "AI tutoring", "educational technology", "AI-powered learning"]
+featuredImage: "/images/blog/ai-wont-fix-bad-learning-design.png"
+status: "published"
+---
+
+There's a pitch I keep hearing from EdTech companies: "We're adding AI to our platform." When I ask what that means, the answer is almost always a chatbot that answers student questions about the course material. Sometimes it's an AI that generates quiz questions. Occasionally it's a recommendation engine that suggests the next module.
+
+None of these are bad ideas. But none of them fix the actual problem either.
+
+After two years of building AI-assisted educational tools and shipping over a hundred interactive applets, the pattern is clear: AI amplifies whatever learning design already exists. If the design is good, AI makes it better. If the design is broken, AI makes it broken faster.
+
+## The chatbot illusion
+
+The most common AI integration in EdTech right now is the course chatbot. Upload your curriculum, connect an LLM, let students ask questions. It feels revolutionary the first time you see it work. A student asks "I don't understand equivalent fractions" and gets a patient, personalized explanation.
+
+But here's what actually happens in production. Students ask the chatbot the same questions they'd type into Google. They get answers that are technically correct but pedagogically flat. The chatbot explains equivalent fractions the same way the textbook does, just with more patience and availability. The student reads the explanation, nods, and still can't solve the problem on the next assessment.
+
+The issue isn't the AI's knowledge. It's that explanation alone doesn't build understanding. If it did, textbooks would have a 100% success rate. Learning happens through manipulation, feedback, and progressive challenge - not through reading better explanations of the same concept.
+
+A chatbot layered onto a static course is like hiring a very patient teaching assistant for a lecture that doesn't work. The TA can re-explain the material in fifteen different ways, but if the lecture itself doesn't create opportunities for the student to grapple with the concept, no amount of re-explanation helps.
+
+## Where AI actually changes learning outcomes
+
+The most effective AI integrations I've seen (and built) don't replace the learning design. They enhance specific moments within a well-designed experience.
+
+**Adaptive difficulty sequencing.** In an interactive fractions applet, AI can observe a student's manipulation patterns and adjust the next challenge accordingly. Not just "they got it wrong, show an easier one" but "they consistently confuse the denominator relationship when the numerator exceeds 5, so surface problems that specifically target that gap." This requires the underlying applet to already have meaningful interactions that produce observable learning signals. The AI reads those signals and adjusts the path.
+
+**Real-time hint generation.** When a student is stuck in an interactive simulation, AI can analyze what they've tried so far and generate a contextual nudge. Not "the answer is 6" but "you've been adjusting the numerator - what happens if you look at how the denominator changes?" This only works when the interaction itself is rich enough to produce a manipulation history worth analyzing.
+
+**Content gap detection at scale.** Across thousands of student sessions, AI can identify where learners consistently struggle. Not just which questions they get wrong, but which interaction patterns precede confusion. This data feeds back into content design, making the next version of the applet better. But it requires interactions that generate meaningful behavioral data in the first place.
+
+The common thread: AI works best as an intelligence layer on top of well-designed interactive content. It's a multiplier, not a replacement. And you can't multiply zero.
+
+## The build order matters
+
+Most teams I talk to are approaching AI integration backwards. They have existing courseware (usually video-based or text-heavy) and they're asking: "How do we add AI to this?"
+
+The better question is: "How do we redesign this content so that AI can actually help?"
+
+Here's the difference in practice:
+
+**Backwards approach:** Take a 30-minute video lecture on the Pythagorean theorem. Add an AI chatbot that answers questions about the video. Add AI-generated quiz questions at the end. Ship it as "AI-powered learning."
+
+**Forward approach:** Build an interactive exploration where students manipulate right triangles, observe how side lengths relate, and discover the theorem through experimentation. Use AI to adapt the difficulty based on each student's manipulation patterns. Use AI to detect when a student is stuck and provide targeted hints. Use AI to identify which geometric relationships are hardest for students across the cohort and surface those in the next version.
+
+The first approach adds AI to content that fundamentally doesn't support active learning. The second approach designs for active learning first and uses AI to make it more responsive.
+
+The build order is: interaction design first, AI enhancement second. Every time.
+
+## Three questions before adding AI to your EdTech product
+
+Before investing in AI integration, these diagnostic questions save months of misallocated effort:
+
+**1. Does your current content generate meaningful learner behavior data?**
+
+If students mostly watch, read, or click "next," there's nothing for AI to work with. AI needs behavioral signals: manipulation patterns, time spent on specific interactions, sequences of attempts, areas of hesitation. If your content doesn't generate these signals, adding AI is premature. Fix the content first.
+
+**2. Is the problem you're solving actually a personalization problem?**
+
+Not every learning challenge is about personalization. Sometimes the content is just badly structured. Sometimes the concept explanation skips a prerequisite. Sometimes the assessment doesn't align with the instruction. AI-powered personalization can't fix structural content problems. It can only route students through existing content more intelligently.
+
+**3. Can you articulate the specific learning moment AI will enhance?**
+
+"We'll add AI to make it smarter" isn't a specification. You need to be able to say: "At this specific moment in the learning experience, AI will observe X behavior, interpret it as Y understanding gap, and provide Z intervention." If you can't get that specific, you're not ready to add AI. You're adding a feature, not improving a learning outcome.
+
+## The cost of AI theater
+
+There's a growing category of EdTech products I'd call "AI theater." They prominently feature AI in their marketing, investor decks, and product tours, but the AI doesn't meaningfully change the learning experience.
+
+The damage goes beyond wasted development budgets:
+
+**Buyer skepticism grows.** Every L&D manager and school administrator who buys an "AI-powered" platform and sees no improvement in outcomes becomes harder to sell to next time. The term "AI-powered" is rapidly becoming meaningless in EdTech procurement conversations. I've heard multiple buyers say some version of "everyone says they have AI now, so I ignore it."
+
+**Real innovations get buried.** When genuine AI-enhanced learning tools enter the market, they compete for attention with AI theater products. The buyer can't distinguish between a chatbot stapled to a PDF course and an adaptive system that genuinely responds to learner behavior. Both say "AI-powered" on the box.
+
+**Development resources get pulled from design.** Teams that invest heavily in AI integration often deprioritize the underlying content and interaction design. The assumption is that AI will compensate for design gaps. It won't. And now you have both a design problem and an AI problem.
+
+## What I've learned building with AI
+
+Working with AI as a building tool (using Claude, Codex, and Cursor to accelerate applet development) has taught me something about AI in learning products: the value of AI is in the iteration speed, not in the end-user interface.
+
+We use AI to build interactive applets faster. The AI helps generate code for simulations, test edge cases, iterate on interaction designs. The output is a pure JavaScript interactive that has no AI in it. The student never talks to an AI. They manipulate a carefully designed simulation that was built with AI assistance.
+
+This distinction matters. AI as a development accelerator is proven and practical. AI as a learning interface is promising but requires thoughtful integration with solid learning design underneath.
+
+The companies that will win in EdTech aren't the ones adding the most AI features. They're the ones using AI to build better learning experiences faster, and being deliberate about where AI enhances the learner's experience versus where it just looks good in a demo.
+
+## The bottom line
+
+AI is a powerful tool for education. But it's a tool, not a strategy. Adding AI to learning content that doesn't support active learning is like adding a turbocharger to a car with flat tires. You'll go faster, but not in a useful direction.
+
+Start with the learning design. Build interactions that produce meaningful feedback. Create content where every student action connects to a concept. Then ask where AI can make that experience more responsive, more adaptive, and more effective.
+
+That's the order. Design first, AI second. The companies that get this right will build products that actually improve learning outcomes. The ones that get it backwards will build impressive demos that don't survive contact with real classrooms.

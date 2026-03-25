@@ -92,7 +92,7 @@ export function Pricing() {
               )}
 
               <h3 className="text-xl font-heading font-bold text-charcoal mb-2">{tier.name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6">{tier.description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed mb-6">{tier.description}</p>
 
               {/* Price */}
               <div className="mb-6">
@@ -113,7 +113,7 @@ export function Pricing() {
               {/* CTA */}
               <a
                 href="https://cal.com/venkatesh.g/30min"
-                className={`w-full mb-6 inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                className={`w-full mb-6 inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-base font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   tier.isPrimary
                     ? "bg-accent hover:bg-accent-hover text-white"
                     : "bg-warm hover:bg-warm-dark text-charcoal border border-charcoal/10"
@@ -130,7 +130,7 @@ export function Pricing() {
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground leading-relaxed">{f}</span>
+                    <span className="text-base text-muted-foreground leading-relaxed">{f}</span>
                   </li>
                 ))}
               </ul>

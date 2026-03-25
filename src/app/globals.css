@@ -80,6 +80,58 @@
   }
 }
 
+/* Blog prose styling */
+.prose-appletpod {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: rgba(26, 26, 46, 0.75);
+}
+.prose-appletpod h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.prose-appletpod h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.prose-appletpod p {
+  margin-bottom: 1.25rem;
+}
+.prose-appletpod strong {
+  color: #1A1A2E;
+  font-weight: 600;
+}
+.prose-appletpod ul, .prose-appletpod ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose-appletpod li {
+  margin-bottom: 0.5rem;
+}
+.prose-appletpod a {
+  color: #E87B35;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-appletpod a:hover {
+  color: #D06A2A;
+}
+.prose-appletpod blockquote {
+  border-left: 3px solid #E87B35;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: rgba(26, 26, 46, 0.6);
+  font-style: italic;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

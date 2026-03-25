@@ -43,7 +43,7 @@ export function Header() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7 text-[15px] font-medium text-charcoal/60">
+        <nav className="hidden md:flex items-center gap-7 text-base font-medium text-charcoal/60">
           {navLinks.map((link) => {
             const href = link.href.startsWith("/")
               ? link.href
@@ -62,7 +62,7 @@ export function Header() {
           })}
           <a
             href="https://cal.com/venkatesh.g/30min"
-            className="inline-flex items-center justify-center h-9 px-4 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center h-9 px-4 rounded-lg bg-accent text-white text-base font-medium hover:bg-accent-hover cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             Book a Call
           </a>
@@ -98,7 +98,7 @@ export function Header() {
                   key={link.href}
                   href={href}
                   onClick={() => setIsOpen(false)}
-                  className="w-full text-center py-2.5 text-charcoal/70 hover:text-charcoal text-[15px] font-medium transition-colors rounded-lg cursor-pointer"
+                  className="w-full text-center py-2.5 text-charcoal/70 hover:text-charcoal text-base font-medium transition-colors rounded-lg cursor-pointer"
                 >
                   {link.label}
                 </a>

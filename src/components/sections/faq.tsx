@@ -49,7 +49,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
           open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-5 pb-5 text-sm text-charcoal/60 leading-relaxed -mt-1">
+        <div className="px-5 pb-5 text-base text-charcoal/60 leading-relaxed -mt-1">
           {a}
         </div>
       </div>

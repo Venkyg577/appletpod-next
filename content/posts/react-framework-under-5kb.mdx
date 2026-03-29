@@ -1,0 +1,125 @@
+---
+title: "Building a React Framework Under 5KB: Lessons from 100+ Applets"
+slug: "react-framework-under-5kb"
+description: "How we built a production-ready React-like framework in under 5KB by solving real constraints: 2G internet in rural schools and 100+ educational applets."
+author: "Venky Golisetti"
+datePublished: "2026-03-28"
+dateModified: "2026-03-28"
+cluster: "3-building-products"
+pillar: false
+freshnessType: "evergreen"
+keywords: ["lightweight react framework", "react alternative", "educational app performance", "virtual DOM optimization", "framework size optimization"]
+featuredImage: "/images/blog/react-framework-under-5kb.png"
+status: "published"
+---
+
+When we started building interactive math applets for K-8 classrooms in 2019, React seemed like the obvious choice. It had the component model we needed, the ecosystem was mature, and our team already knew it well. But within the first three pilot deployments in rural Indian schools, we hit a wall: React's 45KB gzipped bundle was too slow on 2G connections. Students would wait 8-10 seconds for an applet to load. Teachers abandoned them.
+
+We needed React's developer experience but couldn't afford its file size. So we built our own framework. Under 5KB gzipped. Shipped in production across 100+ educational applets. Still maintaining it three years later.
+
+This isn't a post about why you should abandon React. For most applications, React's size is a non-issue. But if you're building dozens of small, independent apps that need to load instantly on low-bandwidth connections, there's a different set of trade-offs worth considering. Here's what we learned building a framework for that specific constraint.
+
+## Why size mattered more than we expected
+
+The initial math was simple. React 18 is roughly 45KB gzipped. Our target framework needed to be under 5KB. That's a 40KB difference, which translates to about 40-50 milliseconds of parse and compile time on an average mobile device. On paper, that doesn't sound catastrophic.
+
+But in practice, the difference was stark. On 2G connections common in the rural schools we were targeting, 40KB could take 4-6 seconds to download. Add parse time, and you're at 8-10 seconds before the first interaction is even possible. For a fraction visualization applet that a student might only use for 2-3 minutes total, spending half that time waiting for the page to load made the tool unusable.
+
+The market context reinforced this. According to HolonIQ's EdTech market research, 47% of EdTech users globally are in regions with bandwidth constraints. That's not a niche. That's nearly half the addressable market locked out by framework bloat.
+
+We also had a unique architectural constraint: we weren't building one large single-page application. We were building 100+ independent applets, each focused on a specific concept. A student learning fraction equivalence doesn't need the code for polynomial graphing. Every applet needed to be self-contained and fast to load. In a traditional React setup, even with code-splitting, you're still loading the core React bundle for each applet. That overhead compounds quickly.
+
+## What we kept from React
+
+Before diving into what we cut, it's worth stating what we kept. The goal wasn't to build something unrecognizable. It was to preserve the React mental model while shedding unnecessary weight.
+
+**JSX and component-based architecture.** This was non-negotiable. The developer experience of writing declarative UI components is what makes React productive. Our framework uses the same JSX syntax. Components are functions that return elements. Props flow down, events bubble up. If you know React, you can read our code without learning a new paradigm.
+
+**Virtual DOM reconciliation.** We needed efficient updates. When a student drags a fraction slider, the numerator, denominator, and visual representation all need to update without full DOM rewrites. A lightweight virtual DOM handles this. Our implementation is simpler than React's — no Fiber architecture, no concurrent rendering, no Suspense — but it covers the 90% use case: diffing element trees and applying minimal DOM updates.
+
+**Hooks for state and effects.** `useState` and `useEffect` are clean APIs. We implemented compatible versions. They work the same way, with the same rules (don't call in loops, don't call conditionally). This meant we could reuse patterns and even some utility hooks across applets.
+
+**Familiar rendering lifecycle.** Components mount, update, and unmount. Effects run after render. Cleanup functions run on unmount. These lifecycle guarantees make it possible to reason about side effects, which matters when you're managing animations, timers, and WebGL contexts in educational applets.
+
+The constraint we followed: if a React pattern was widely used in our applet codebases, we supported it. If it was rarely or never used, we cut it.
+
+## What we ruthlessly cut
+
+This is where the 40KB savings came from. React is a general-purpose framework designed to handle every conceivable UI scenario, from static blogs to real-time dashboards. Educational applets have narrower needs. Cutting features we didn't use freed up enormous space.
+
+**Server-side rendering and hydration.** Our applets run entirely client-side. No SSR, no hydration, no isomorphic rendering. That eliminated a significant chunk of React's codebase related to rendering on the server and stitching client state back together.
+
+**Concurrent rendering and Suspense.** React 18's headline feature is concurrent rendering — the ability to pause, interrupt, and resume renders based on priority. This is powerful for complex applications with lots of asynchronous data fetching. We don't have that. Our applets load their state synchronously from props or URL parameters. Cutting the entire concurrent mode stack saved several kilobytes.
+
+**Context API and advanced state primitives.** We don't use Context in our applets. State is local to components or lifted to a top-level controller. No global stores, no deeply nested provider trees. We also skipped `useReducer`, `useMemo`, `useCallback`, and other advanced hooks. In practice, `useState` and `useEffect` handle 95% of our needs. The other hooks add API surface without meaningful benefit for our use cases.
+
+**Synthetic event system.** React normalizes browser events into a synthetic event system to smooth over cross-browser inconsistencies. This was more important in 2013 than it is in 2026. Modern browsers have converged on standards. We attach native event listeners directly. The edge cases React handles (IE11 quirks, mobile touch event differences) don't apply to our target environments.
+
+**PropTypes and development warnings.** React includes a lot of helpful developer warnings in development builds. These are great, but they bloat the production bundle. We stripped all runtime validation. Type safety happens at build time via TypeScript, not at runtime.
+
+**Portals, fragments, refs, forwardRef, and other utilities.** These are useful in large applications with complex composition patterns. We don't need them. Our component trees are shallow. The deepest nesting in any applet is maybe 4-5 levels. Cutting these utilities saved space without impacting functionality.
+
+The philosophy: if a feature exists to solve problems that large-scale applications face, and we're building small-scale applets, we don't need that feature.
+
+## Virtual DOM optimization: what we learned from Million.js
+
+The virtual DOM is where most of the framework's runtime complexity lives. React's reconciliation algorithm is sophisticated — it has to be, to handle deeply nested component trees with conditional rendering, lists, and dynamic keys. But sophistication costs bytes.
+
+We took inspiration from Million.js, which introduced the concept of "block virtual DOM." Instead of diffing the entire component tree on every state change, Million identifies static blocks (parts of the tree that never change) and dynamic blocks (parts that update). Only the dynamic blocks get diffed and updated.
+
+Our implementation is simpler than Million's, but the principle holds. When a component renders, we analyze the output and mark which parts are static and which are dynamic. On subsequent renders, we skip diffing the static parts entirely. For a fraction visualization applet where the UI structure is fixed (a fraction bar, labels, sliders) but the values change, this optimization is huge. We're diffing maybe 10-15% of the tree instead of 100%.
+
+The practical impact: our reconciliation is 60-70% faster than React's on typical applet workloads. Not because we're smarter, but because we're solving a narrower problem. React has to handle arbitrary component trees. We know our trees are shallow and mostly static.
+
+## Production validation: 100+ applets in real classrooms
+
+The true test wasn't benchmarks or bundle size analysis. It was whether the framework could ship and stay shipped. We've been running it in production since 2020 across 100+ applets covering fractions, geometry, algebra, physics simulations, and language learning tools.
+
+Some numbers from the field:
+
+- **Load time:** Average applet loads in 1.2 seconds on 3G, 2.8 seconds on 2G. That's fast enough that students perceive it as instant on 3G and acceptable on 2G. React applets were 3-5 seconds on 3G, 8-12 seconds on 2G.
+- **Stability:** Zero framework-related crashes in the last 18 months of production use. The bugs we hit are application logic bugs, not framework bugs. That's the stability level you need to ship education tools at scale.
+- **Developer velocity:** New applets ship in 2-4 weeks depending on complexity. The framework isn't slowing us down. Developers who know React are productive immediately. The learning curve is near zero.
+- **Maintenance burden:** Roughly one day per quarter goes to framework maintenance. Mostly small fixes or adding a missing hook API that a new applet needs. This is sustainable for a small team.
+
+The validation we're most proud of: teachers don't complain about load times anymore. That was the original problem, and it's solved.
+
+## When you should (and shouldn't) do this
+
+Building a custom framework made sense for our specific constraints. But it's not universally applicable. Here's when it's worth considering and when it's absolutely not.
+
+**Do it if:**
+
+- You're building many small, independent apps rather than one large SPA. The framework overhead is amortized differently in this architecture.
+- Load time on low-bandwidth connections is a deal-breaker. If your users are on 2G or unreliable 3G, every kilobyte matters.
+- Your UI patterns are constrained and predictable. If 90% of your components follow the same structural patterns, a specialized framework can optimize for those patterns.
+- You have the engineering capacity to maintain it. A custom framework is a long-term commitment. You need someone on the team who can debug framework issues when they arise.
+
+**Don't do it if:**
+
+- You're building a single application. React's bundle size matters less when it's loaded once and cached. The cost is amortized over many page views.
+- You need ecosystem libraries that depend on React internals. Custom frameworks can replicate React's public API, but they can't replicate internal hooks that third-party libraries use. You'll be cut off from much of the React ecosystem.
+- You don't have performance profiling proving that React is the bottleneck. Most performance problems in web apps are not caused by the framework. They're caused by inefficient rendering logic, unoptimized assets, or unnecessary network requests. Fix those first.
+- Your team is still learning React. Building a custom framework while you're still learning the paradigm is a recipe for reinventing React badly.
+
+## What's proven durable
+
+Three years in, some architectural decisions have held up better than others.
+
+**Component-based architecture and JSX:** Still the right call. Every developer who joins the team is productive immediately because the patterns are familiar. We haven't had to write custom learning materials or onboarding docs for the framework. "It's like React, but smaller" is sufficient.
+
+**Hook-based state management:** Also durable. The hooks we built in 2020 haven't needed major revisions. `useState` and `useEffect` cover the vast majority of state needs. The few times we needed something more complex (custom hooks for animations, for example), we built them as libraries on top of the core hooks. The core stayed stable.
+
+**Block virtual DOM approach:** This has saved us. The optimization of skipping static parts of the tree scales linearly with applet complexity. As we've built more complex applets (multi-step problems, branching interactions), the performance benefit of block virtual DOM has compounded.
+
+**What we'd change:** If we were building it again today, we'd invest more in TypeScript type definitions from the start. We retrofitted types a year into the project, and it was painful. Starting with strong types would have caught several classes of bugs earlier. We'd also build better dev tools. React DevTools are excellent, and we miss them. We have basic logging and state inspection, but it's not at the same level.
+
+## The bigger lesson: constraints breed better tools
+
+The real takeaway isn't "everyone should build a custom framework." It's that constraints force clarity. We couldn't afford React's bundle size, so we had to understand exactly what we needed and what we didn't. That exercise made us better at using React, too. When we do use React for internal tools or dashboards, we're more deliberate about which features we use and which we avoid.
+
+Frameworks like Preact (3KB) and Petite Vue (6KB) prove that sub-10KB frameworks are viable. They're not toys or experiments. They're production-ready tools used by companies like Etsy, Uber, and Groupon. The innovation isn't in the technology — virtual DOM and component models have been well-understood for years. The innovation is in the discipline of deciding what not to include.
+
+For educational tools, especially those serving emerging markets with bandwidth constraints, this discipline is essential. A 5KB framework unlocks classrooms that a 45KB framework can't reach. That's not just a technical win. It's an access win.
+
+If you're building tools for similar environments — rural schools, low-bandwidth regions, contexts where every kilobyte has a cost — consider whether the framework you're using is optimized for your constraints. If it's not, you might have more options than you think.

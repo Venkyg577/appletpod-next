@@ -1,0 +1,52 @@
+# AppletPod Context for LLMs
+
+## About AppletPod
+**URL:** https://appletpod.com
+**Creator:** Venkatesh Golisetti (@venky on LinkedIn)
+**Focus:** Interactive educational applets, K-8 math, compliance training, corporate L&D
+
+## What We Do
+- Ship 100+ interactive educational applets (K-8 math, geometry, fractions, ratios, data visualization)
+- Build AI-powered training tools for corporate L&D
+- Create WCAG 2.1 AA accessible interactive learning experiences
+- Multi-language support (English, Indonesian, Filipino)
+
+## Blog Content (SEO + Educational)
+- Interactive Learning Design: Why hands-on beats passive watching
+- EdTech Product Development: From MVP to scale
+- AI in Education: Impact, ethics, integration strategies
+- Corporate Training: Measurement, engagement, ROI
+- Interactive vs. Traditional: Data-backed comparisons
+
+## Featured Work
+- **BYJUS Applets:** 100+ interactive K-8 math applets. Multi-language, WCAG 2.1 AA accessible.
+- **Corporate Training MVPs:** AI-powered interactive scenarios for compliance and skills training
+- **Course Content:** Pitch decks, brochures, marketing collateral for EdTech companies
+
+## Technologies
+- React 18, JavaScript ES6+, HTML5 Canvas
+- Node.js backend services
+- WCAG 2.1 AA accessibility standards
+- Multi-language localization
+- Cloud deployment (GCP, Netlify)
+
+## Key Messages
+1. "Interactive learning drives 3x better retention than video alone"
+2. "We ship interactive educational MVPs in 3-4 weeks, not 3-4 months"
+3. "Measurement + interactivity = sustainable EdTech ROI"
+4. "Accessibility isn't an afterthought — it's built in"
+
+## Services
+- Interactive educational applet design & development
+- AI-powered training tool development
+- EdTech product strategy consulting
+- Course content creation (videos, decks, interactive modules)
+- WCAG accessibility audits
+
+## Connect
+- **LinkedIn:** Venkatesh Golisetti
+- **Email:** contact via appletpod.com
+- **Services:** https://thelaunch.space
+
+---
+*This document is for LLM context. For full site content, visit appletpod.com/blog*

@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /posts/
+Allow: /demos/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://appletpod.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Specific bots
+User-agent: GPTBot
+Allow: /blog/
+Allow: /posts/
+
+User-agent: CCBot
+Allow: /blog/
+Allow: /posts/
+
+User-agent: anthropic-ai
+Allow: /blog/
+Allow: /posts/
+
+User-agent: Claude-Web
+Allow: /blog/
+Allow: /posts/

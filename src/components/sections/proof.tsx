@@ -2,33 +2,25 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { FlaskConical, GripVertical, GitBranch } from "lucide-react";
+import { Zap, Calculator } from "lucide-react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const tabs = [
   {
-    id: "sim",
-    label: "Simulations",
-    title: "Science Simulation",
-    desc: "Students manipulate variables and see results in real-time",
-    icon: FlaskConical,
-    src: "/demos/simulations/index.html",
+    id: "circuits",
+    label: "Circuits",
+    title: "Parallel & Series Circuits",
+    desc: "Explore how bulbs behave in parallel vs series circuits",
+    icon: Zap,
+    src: "/demos/parallel-sequential/index.html",
   },
   {
-    id: "dnd",
-    label: "Drag & Drop",
-    title: "Drag-and-Drop Classification",
-    desc: "Learners sort concepts with instant feedback",
-    icon: GripVertical,
-    src: "/demos/draganddrop/index.html",
-  },
-  {
-    id: "branch",
-    label: "Branching",
-    title: "Branching Scenario",
-    desc: "Decision-making with real consequences",
-    icon: GitBranch,
-    src: "/demos/branching/index.html",
+    id: "decimals",
+    label: "Decimals",
+    title: "Comparing Decimal Numbers",
+    desc: "Visualise and compare decimal place values interactively",
+    icon: Calculator,
+    src: "/demos/comparing-decimals/index.html",
   },
 ];
 
@@ -82,7 +74,7 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 }
 
 function TabbedDemos() {
-  const [activeTab, setActiveTab] = useState("sim");
+  const [activeTab, setActiveTab] = useState("circuits");
 
   return (
     <div className="h-full w-full flex flex-col bg-gray-100 dark:bg-zinc-900">

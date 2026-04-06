@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -20,6 +21,15 @@ export function Footer() {
             className="hover:text-white/60 transition-colors duration-200"
           >
             Terms of Service
+          </a>
+          <a
+            href="https://www.linkedin.com/company/appletpod"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/60 transition-colors duration-200"
+            aria-label="AppletPod on LinkedIn"
+          >
+            <Linkedin className="w-4 h-4" />
           </a>
         </div>
         <p>&copy; 2026 VAMIX Technologies Pvt Ltd</p>

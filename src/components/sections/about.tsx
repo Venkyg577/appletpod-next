@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 const credentials = ["10+ Years EdTech", "300+ Team Led", "100+ Applets Shipped"];
@@ -70,7 +70,7 @@ export function About() {
               </p>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap items-center gap-2">
               {credentials.map((c) => (
                 <span
                   key={c}
@@ -80,6 +80,15 @@ export function About() {
                   {c}
                 </span>
               ))}
+              <a
+                href="https://www.linkedin.com/in/venkatesh-golisetti/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#0A66C2] px-3 py-1.5 rounded-full hover:bg-[#004182] transition-colors duration-200"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                LinkedIn
+              </a>
             </div>
           </div>
         </motion.div>

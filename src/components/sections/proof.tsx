@@ -75,9 +75,22 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
 function TabbedDemos() {
   const [activeTab, setActiveTab] = useState("circuits");
+  const [visible, setVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="h-full w-full flex flex-col bg-gray-100 dark:bg-zinc-900">
+    <div ref={containerRef} className="h-full w-full flex flex-col bg-gray-100 dark:bg-zinc-900">
       {/* Tab bar — flush with container, no separate bg */}
       <div className="flex items-center gap-1 border-b border-black/5 px-3 md:px-4 pt-2 shrink-0" role="tablist">
         {tabs.map((tab) => (
@@ -101,7 +114,7 @@ function TabbedDemos() {
         ))}
       </div>
 
-      {/* Tab panels — iframe loads inside the tablet */}
+      {/* Tab panels — iframe loads only after section is visible */}
       <div className="flex-1 relative">
         {tabs.map((tab) => (
           <div
@@ -111,9 +124,8 @@ function TabbedDemos() {
               activeTab === tab.id ? "flex" : "hidden"
             }`}
           >
-            {/* Live app iframe — fills the tablet screen */}
             <div className="flex-1 relative">
-              {activeTab === tab.id && (
+              {visible && activeTab === tab.id && (
                 <iframe
                   className="w-full h-full absolute inset-0"
                   src={tab.src}

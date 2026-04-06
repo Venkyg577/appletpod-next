@@ -25,16 +25,11 @@ export function FinalCta() {
         </p>
 
         <div className="mt-10">
-          {/* Calendly placeholder */}
-          <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-8 max-w-md mx-auto">
-            <p className="text-white/35 text-sm mb-5 font-medium">
-              Calendly booking widget loads here
-            </p>
-            {/* Replace with:
-              <div className="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style={{minWidth:'320px',height:'630px'}} />
-            */}
+          <div className="max-w-md mx-auto">
             <a
               href="https://cal.com/venkatesh.g/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 w-full h-14 text-base font-medium rounded-lg bg-accent text-white hover:bg-accent-hover cursor-pointer shadow-lg shadow-accent/30 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               Book a Call <MoveRight className="w-5 h-5" />

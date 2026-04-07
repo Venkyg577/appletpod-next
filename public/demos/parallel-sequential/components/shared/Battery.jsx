@@ -1,8 +1,27 @@
 function Battery(props){
   var h = window.MiniReact.h;
   var label = props.label || '1.5V';
-  var w = props.width || 80;
-  var ht = props.height || 140;
+  var orientation = props.orientation || 'vertical';
+  var w = props.width || (orientation === 'horizontal' ? 180 : 80);
+  var ht = props.height || (orientation === 'horizontal' ? 84 : 140);
+
+  if (orientation === 'horizontal') {
+    return h('svg', {
+      className: 'battery-svg battery-svg--horizontal',
+      width: String(w),
+      height: String(ht),
+      viewBox: '0 0 180 84',
+      preserveAspectRatio: 'xMidYMid meet'
+    },
+      h('rect', { x: '16', y: '22', width: '148', height: '46', rx: '8', fill: '#8f969d', stroke: '#646b72', 'stroke-width': '2' }),
+      h('rect', { x: '92', y: '22', width: '72', height: '46', rx: '0', fill: '#c62839' }),
+      h('rect', { x: '160', y: '34', width: '8', height: '22', rx: '3', fill: '#c62839', stroke: '#8f1b28', 'stroke-width': '1' }),
+      h('rect', { x: '12', y: '34', width: '8', height: '22', rx: '3', fill: '#7f878e', stroke: '#646b72', 'stroke-width': '1' }),
+      h('text', { x: '50', y: '52', 'text-anchor': 'middle', fill: '#ffffff', 'font-size': '24', 'font-weight': '700' }, '\u2212'),
+      h('text', { x: '128', y: '52', 'text-anchor': 'middle', fill: '#ffffff', 'font-size': '24', 'font-weight': '700' }, '+'),
+      h('text', { x: '90', y: '50', 'text-anchor': 'middle', fill: '#ffd54f', 'font-size': '16', 'font-weight': '700', 'dominant-baseline': 'middle' }, label)
+    );
+  }
 
   return h('svg', {
     className: 'battery-svg',

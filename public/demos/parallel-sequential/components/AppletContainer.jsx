@@ -32,13 +32,12 @@ function AppletContainer(props){
 
     // Main content: left panel + center controls + right panel
     h('div', { className: 'main-content' },
-      // Left: Series Circuit (per wireframe)
+      // Left: Parallel Circuit (matches reference diagram)
       h('div', { className: 'panel-wrapper panel-wrapper--left' },
-        h(window.SeriesCircuitPanel, {
+        h(window.ParallelCircuitPanel, {
           t: t,
-          bulbCount: appState.bulbCount,
-          masterOn: appState.seriesMasterOn,
-          onToggleMaster: appState.toggleSeriesMaster
+          bulbs: parallelBulbs,
+          onToggleBulb: appState.toggleParallelBulb
         })
       ),
 
@@ -52,12 +51,13 @@ function AppletContainer(props){
         })
       ),
 
-      // Right: Parallel Circuit (per wireframe)
+      // Right: Series Circuit (matches reference diagram)
       h('div', { className: 'panel-wrapper panel-wrapper--right' },
-        h(window.ParallelCircuitPanel, {
+        h(window.SeriesCircuitPanel, {
           t: t,
-          bulbs: parallelBulbs,
-          onToggleBulb: appState.toggleParallelBulb
+          bulbCount: appState.bulbCount,
+          masterOn: appState.seriesMasterOn,
+          onToggleMaster: appState.toggleSeriesMaster
         })
       )
     ),
@@ -65,13 +65,13 @@ function AppletContainer(props){
     // Description row
     h('div', { className: 'panel-descriptions' },
       h('div', { className: 'panel-desc panel-desc--left' },
-        h('p', { className: 'desc-main' }, t('content-ui.dialogs.series_voltage_desc')),
-        h('p', { className: 'desc-detail' }, t('content-ui.dialogs.series_brightness_desc'))
+        h('p', { className: 'desc-main' }, t('content-ui.dialogs.parallel_voltage_desc')),
+        h('p', { className: 'desc-detail' }, t('content-ui.dialogs.parallel_brightness_desc'))
       ),
       h('div', { className: 'panel-desc-spacer' }),
       h('div', { className: 'panel-desc panel-desc--right' },
-        h('p', { className: 'desc-main' }, t('content-ui.dialogs.parallel_voltage_desc')),
-        h('p', { className: 'desc-detail' }, t('content-ui.dialogs.parallel_brightness_desc'))
+        h('p', { className: 'desc-main' }, t('content-ui.dialogs.series_voltage_desc')),
+        h('p', { className: 'desc-detail' }, t('content-ui.dialogs.series_brightness_desc'))
       )
     ),
 

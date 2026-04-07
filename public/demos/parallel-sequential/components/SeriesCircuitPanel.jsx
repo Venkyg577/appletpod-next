@@ -3,30 +3,27 @@ function SeriesCircuitPanel(props){
   var t = props.t || function(k){ return k; };
   var bulbCount = props.bulbCount || 2;
   var masterOn = props.masterOn !== false;
-  var onToggleMaster = props.onToggleMaster || function(){};
-  var audio = window.useAudioFeedback ? window.useAudioFeedback() : { switchOn:function(){}, switchOff:function(){} };
 
   // In series: all bulbs share voltage equally
   var brightnessPerBulb = masterOn ? Math.round(100 / bulbCount) : 0;
 
-  function handleToggleMaster(){
-    if (masterOn) audio.switchOff(); else audio.switchOn();
-    onToggleMaster();
-  }
-
-  // ---- Circuit geometry (same as reference) ----
-  var circuitW = 960;
-  var circuitH = 500;
-  var batteryX = 50;
-  var batteryY = 170;
-  var wireY_top = 40;
-  var wireY_bottom = circuitH - 36;
-  var startX = 200;
-  var endX = 900;
-  var batTopX = batteryX + 40;
-  var bulbHalf = 35;
-  var leftBound = startX + 56;
-  var rightBound = endX - 56;
+  var circuitW = 860;
+  var circuitH = 520;
+  var leftWireX = 120;
+  var rightWireX = 710;
+  var topY = 92;
+  var bottomY = 410;
+  var batteryW = 180;
+  var batteryH = 84;
+  var batteryX = 262;
+  var batteryY = 424;
+  var batteryLeftTerminalX = batteryX + 16;
+  var batteryRightTerminalX = batteryX + batteryW - 16;
+  var batteryWireY = batteryY + 45;
+  var bulbY = topY;
+  var bulbHalf = 42;
+  var leftBound = leftWireX + 130;
+  var rightBound = rightWireX - 110;
 
   var bxList = [];
   var bi;
@@ -41,46 +38,56 @@ function SeriesCircuitPanel(props){
   var wireElements = [];
   var flowElements = [];
   var overlayElements = [];
-  var strokeOn = masterOn ? '#FFD700' : '#555';
-
-  // Main frame wires
   var frameLines = [
-    { x1: batTopX, y1: batteryY, x2: batTopX, y2: wireY_top, k: 'w-bt' },
-    { x1: batTopX, y1: wireY_top, x2: endX, y2: wireY_top, k: 'w-top' },
-    { x1: batTopX, y1: batteryY + 140, x2: batTopX, y2: wireY_bottom, k: 'w-bb' },
-    { x1: batTopX, y1: wireY_bottom, x2: endX, y2: wireY_bottom, k: 'w-bot' },
-    { x1: endX, y1: wireY_top, x2: endX, y2: wireY_bottom, k: 'w-right' }
+    { x1: batteryLeftTerminalX, y1: batteryWireY, x2: leftWireX, y2: batteryWireY, color: 'neg', k: 'w-bot-l' },
+    { x1: leftWireX, y1: batteryWireY, x2: leftWireX, y2: topY, color: 'neg', k: 'w-left' },
+    { x1: rightWireX, y1: topY, x2: rightWireX, y2: batteryWireY, color: 'pos', k: 'w-right' },
+    { x1: batteryRightTerminalX, y1: batteryWireY, x2: rightWireX, y2: batteryWireY, color: 'pos', k: 'w-bot-r' }
   ];
   frameLines.forEach(function(l){
-    wireElements.push(h('line', { x1: String(l.x1), y1: String(l.y1), x2: String(l.x2), y2: String(l.y2), stroke: strokeOn, 'stroke-width': '5', key: l.k }));
+    wireElements.push(h('line', {
+      x1: String(l.x1),
+      y1: String(l.y1),
+      x2: String(l.x2),
+      y2: String(l.y2),
+      className: 'circuit-wire circuit-wire--' + l.color,
+      key: l.k
+    }));
     if (masterOn) {
       flowElements.push(h('line', { x1: String(l.x1), y1: String(l.y1), x2: String(l.x2), y2: String(l.y2), className: 'wire-flow', 'stroke-width': '5', key: 'f-' + l.k }));
     }
   });
 
-  // Bottom wire segments between bulb terminals
+  // Top wire segments between bulb terminals
   if (bulbCount >= 1) {
     var b0 = bxList[0];
-    wireElements.push(h('line', { x1: String(startX), y1: String(wireY_bottom), x2: String(b0 - bulbHalf), y2: String(wireY_bottom), stroke: strokeOn, 'stroke-width': '4', key: 'sw-l-0' }));
+    wireElements.push(h('line', {
+      x1: String(leftWireX),
+      y1: String(bulbY),
+      x2: String(b0 - bulbHalf),
+      y2: String(bulbY),
+      className: 'circuit-wire circuit-wire--neg',
+      key: 'sw-l-0'
+    }));
     if (masterOn) {
-      flowElements.push(h('line', { x1: String(startX), y1: String(wireY_bottom), x2: String(b0 - bulbHalf), y2: String(wireY_bottom), className: 'wire-flow', 'stroke-width': '4', key: 'fs-l-0' }));
+      flowElements.push(h('line', { x1: String(leftWireX), y1: String(bulbY), x2: String(b0 - bulbHalf), y2: String(bulbY), className: 'wire-flow', 'stroke-width': '4', key: 'fs-l-0' }));
     }
     for (bi = 1; bi < bulbCount; bi++) {
+      var wireColor = (bi === bulbCount - 1) ? 'pos' : 'mid';
       wireElements.push(h('line', {
         x1: String(bxList[bi - 1] + bulbHalf),
-        y1: String(wireY_bottom),
+        y1: String(bulbY),
         x2: String(bxList[bi] - bulbHalf),
-        y2: String(wireY_bottom),
-        stroke: strokeOn,
-        'stroke-width': '4',
+        y2: String(bulbY),
+        className: 'circuit-wire circuit-wire--' + wireColor,
         key: 'sw-m-' + bi
       }));
       if (masterOn) {
         flowElements.push(h('line', {
           x1: String(bxList[bi - 1] + bulbHalf),
-          y1: String(wireY_bottom),
+          y1: String(bulbY),
           x2: String(bxList[bi] - bulbHalf),
-          y2: String(wireY_bottom),
+          y2: String(bulbY),
           className: 'wire-flow',
           'stroke-width': '4',
           key: 'fs-m-' + bi
@@ -88,9 +95,16 @@ function SeriesCircuitPanel(props){
       }
     }
     var bLast = bxList[bulbCount - 1];
-    wireElements.push(h('line', { x1: String(bLast + bulbHalf), y1: String(wireY_bottom), x2: String(endX), y2: String(wireY_bottom), stroke: strokeOn, 'stroke-width': '4', key: 'sw-r-end' }));
+    wireElements.push(h('line', {
+      x1: String(bLast + bulbHalf),
+      y1: String(bulbY),
+      x2: String(rightWireX),
+      y2: String(bulbY),
+      className: 'circuit-wire circuit-wire--pos',
+      key: 'sw-r-end'
+    }));
     if (masterOn) {
-      flowElements.push(h('line', { x1: String(bLast + bulbHalf), y1: String(wireY_bottom), x2: String(endX), y2: String(wireY_bottom), className: 'wire-flow', 'stroke-width': '4', key: 'fs-r-end' }));
+      flowElements.push(h('line', { x1: String(bLast + bulbHalf), y1: String(bulbY), x2: String(rightWireX), y2: String(bulbY), className: 'wire-flow', 'stroke-width': '4', key: 'fs-r-end' }));
     }
   }
 
@@ -103,7 +117,7 @@ function SeriesCircuitPanel(props){
         style: {
           position: 'absolute',
           left: bx + 'px',
-          top: wireY_bottom + 'px',
+          top: bulbY + 'px',
           transform: 'translate(-50%, -50%)'
         },
         key: 'bulb-s-' + bi
@@ -111,15 +125,14 @@ function SeriesCircuitPanel(props){
         h(window.CircuitBulb, {
           brightness: brightnessPerBulb,
           isOn: masterOn,
-          size: 70,
+          size: 78,
           showPercent: true
         })
       )
     );
   }
 
-  // Scale factor to fit panel
-  var scaleFactor = 0.73;
+  var scaleFactor = 0.78;
   var scaledW = Math.round(circuitW * scaleFactor);
   var scaledH = Math.round(circuitH * scaleFactor);
 
@@ -141,7 +154,7 @@ function SeriesCircuitPanel(props){
           flowElements
         ),
         h('div', { style: { position: 'absolute', left: batteryX + 'px', top: batteryY + 'px' } },
-          h(window.Battery, { label: t('content-ui.labels.voltage'), width: 80, height: 140 })
+          h(window.Battery, { label: t('content-ui.labels.voltage'), orientation: 'horizontal', width: batteryW, height: batteryH })
         ),
         overlayElements
       )

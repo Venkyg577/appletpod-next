@@ -24,6 +24,9 @@ function ParallelCircuitPanel(props){
   var batteryWireY = batteryY + batteryTerminalY;
   var branchTop = topY;
   var branchBottom = bottomY;
+  var rectMidY = Math.round((branchTop + branchBottom) / 2);
+  var leftBatteryJoinX = leftWireX - 34;
+  var rightBatteryJoinX = rightWireX + 34;
   var bulbYOffset = -38;
 
   var bulbYs = [];
@@ -41,12 +44,26 @@ function ParallelCircuitPanel(props){
   var wireElements = [];
   var flowElements = [];
   var branchElements = [];
-  var lineDefs = [
-    { x1: leftWireX, y1: topY, x2: leftWireX, y2: batteryWireY, color: 'neg', key: 'l-rail' },
-    { x1: batteryLeftTerminalX, y1: batteryWireY, x2: leftWireX, y2: batteryWireY, color: 'neg', key: 'l-bottom' },
-    { x1: rightWireX, y1: topY, x2: rightWireX, y2: batteryWireY, color: 'pos', key: 'r-rail' },
-    { x1: batteryRightTerminalX, y1: batteryWireY, x2: rightWireX, y2: batteryWireY, color: 'pos', key: 'r-bottom-wire' }
-  ];
+  var lineDefs = n === 1
+    ? [
+        { x1: leftWireX, y1: topY, x2: leftWireX, y2: batteryWireY, color: 'neg', key: 'l-rail' },
+        { x1: batteryLeftTerminalX, y1: batteryWireY, x2: leftWireX, y2: batteryWireY, color: 'neg', key: 'l-bottom' },
+        { x1: rightWireX, y1: topY, x2: rightWireX, y2: batteryWireY, color: 'pos', key: 'r-rail' },
+        { x1: batteryRightTerminalX, y1: batteryWireY, x2: rightWireX, y2: batteryWireY, color: 'pos', key: 'r-bottom-wire' }
+      ]
+    : [
+        // Small parallel rectangle rails
+        { x1: leftWireX, y1: topY, x2: leftWireX, y2: bottomY, color: 'neg', key: 'l-rail' },
+        { x1: rightWireX, y1: topY, x2: rightWireX, y2: bottomY, color: 'pos', key: 'r-rail' },
+        // Left battery lead -> mid of left rail
+        { x1: batteryLeftTerminalX, y1: batteryWireY, x2: leftBatteryJoinX, y2: batteryWireY, color: 'neg', key: 'l-bat-h1' },
+        { x1: leftBatteryJoinX, y1: batteryWireY, x2: leftBatteryJoinX, y2: rectMidY, color: 'neg', key: 'l-bat-v' },
+        { x1: leftBatteryJoinX, y1: rectMidY, x2: leftWireX, y2: rectMidY, color: 'neg', key: 'l-bat-h2' },
+        // Right battery lead -> mid of right rail
+        { x1: batteryRightTerminalX, y1: batteryWireY, x2: rightBatteryJoinX, y2: batteryWireY, color: 'pos', key: 'r-bat-h1' },
+        { x1: rightBatteryJoinX, y1: batteryWireY, x2: rightBatteryJoinX, y2: rectMidY, color: 'pos', key: 'r-bat-v' },
+        { x1: rightBatteryJoinX, y1: rectMidY, x2: rightWireX, y2: rectMidY, color: 'pos', key: 'r-bat-h2' }
+      ];
   var li;
   for (li = 0; li < lineDefs.length; li++) {
     var ld = lineDefs[li];

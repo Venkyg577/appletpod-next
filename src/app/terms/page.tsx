@@ -33,7 +33,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-heading text-xl font-bold text-charcoal mb-3">Services</h2>
             <p>
-              AppletPod builds custom interactive learning applets — React-based, SCORM-compatible
+              AppletPod builds custom interactive learning applets — React-based, offline-ready
               educational content — from client-supplied curriculum, raw notes, recordings, or
               storyboards.
             </p>

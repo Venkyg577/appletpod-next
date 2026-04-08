@@ -29,8 +29,8 @@ const tiers = [
     features: [
       "1 production-ready interactive applet",
       "Built from your storyboard or script",
-      "SCORM-compatible, works on any LMS",
-      "Works offline, any device",
+      "Offline-ready, works standalone",
+      "Can be configured for LMS integration",
       "Source files included",
       "One round of revisions",
     ],

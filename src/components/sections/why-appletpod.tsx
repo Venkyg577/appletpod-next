@@ -31,7 +31,7 @@ const principles = [
   {
     num: "06",
     title: "Works everywhere. Even offline.",
-    desc: "React-based. Any device, any LMS, SCORM-compatible. No app installs. No Storyline exports.",
+    desc: "React-based. Works offline, any device. Can be integrated with your LMS. No app installs. No Storyline exports.",
   },
 ];
 

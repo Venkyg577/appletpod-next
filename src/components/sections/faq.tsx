@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Do the applets work with our LMS?",
-    a: "Yes. Every applet is SCORM-compatible and works with any modern LMS — Canvas, Moodle, Blackboard, Docebo, you name it. They also work standalone on any device, including offline.",
+    a: "Yes. Every applet is offline-ready and can be configured to work with your LMS. They work standalone on any device, with or without LMS integration.",
   },
   {
     q: "What if I need changes after delivery?",

@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "comparing-decimals",
+    "title": "Comparing Decimal Numbers",
+    "description": "Drag and drop to compare decimals using place value — students build intuition for number magnitude through hands-on manipulation.",
+    "category": "Mathematics",
+    "grade": "G4-G5",
+    "tags": ["decimals", "place-value", "drag-and-drop"],
+    "status": "published",
+    "demoUrl": "/comparing-decimals/",
+    "thumbnail": null
+  },
+  {
+    "slug": "parallel-series-circuits",
+    "title": "Parallel & Series Circuits",
+    "description": "Add and remove bulbs to explore how brightness changes in parallel vs series circuits — misconception-busting physics made tangible.",
+    "category": "Physics",
+    "grade": "G6-G8",
+    "tags": ["circuits", "physics", "simulation"],
+    "status": "published",
+    "demoUrl": "/parallel-series-circuits/",
+    "thumbnail": null
+  }
+]

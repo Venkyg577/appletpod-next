@@ -20,6 +20,7 @@ function isWorkEmail(email: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
+  console.log("RESEND_API_KEY set:", !!process.env.RESEND_API_KEY);
   try {
     const formData = await request.formData();
 
@@ -105,7 +106,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send confirmation email to the client
-    await resend.emails.send({
+    const { data: clientEmailData, error: clientEmailError } = await resend.emails.send({
       from: "AppletPod <onboarding@resend.dev>",
       to: work_email,
       subject: "We got your applet request — AppletPod",
@@ -135,9 +136,14 @@ export async function POST(request: NextRequest) {
         </div>
       `,
     });
+    if (clientEmailError) {
+      console.error("Client confirmation email failed:", clientEmailError);
+    } else {
+      console.log("Client confirmation email sent, id:", clientEmailData?.id);
+    }
 
     // Send notification email to Venkatesh
-    await resend.emails.send({
+    const { data: adminEmailData, error: adminEmailError } = await resend.emails.send({
       from: "AppletPod <onboarding@resend.dev>",
       to: "Venkatesh@appletpod.com",
       subject: `New free applet request from ${company_name}`,
@@ -163,6 +169,11 @@ export async function POST(request: NextRequest) {
         </div>
       `,
     });
+    if (adminEmailError) {
+      console.error("Admin notification email failed:", adminEmailError);
+    } else {
+      console.log("Admin notification email sent, id:", adminEmailData?.id);
+    }
 
     return NextResponse.json({ success: true, id: submissionId });
   } catch (error) {

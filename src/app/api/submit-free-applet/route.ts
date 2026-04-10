@@ -132,7 +132,26 @@ export async function POST(request: NextRequest) {
             </table>
           </div>
           <p style="font-size: 14px; color: #1A1A2E60; margin-bottom: 8px;">Questions? Reply to this email or reach us at Venkatesh@appletpod.com</p>
-          <p style="font-size: 14px; color: #1A1A2E60;">— Venkatesh, AppletPod</p>
+          <hr style="border: none; border-top: 1px solid #EDEBE8; margin: 32px 0 24px;" />
+          <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+            <tr>
+              <td style="padding-right: 16px; vertical-align: middle;">
+                <img src="https://appletpod.com/logo.png" alt="AppletPod" width="60" style="display: block; width: 60px;" />
+              </td>
+              <td style="border-left: 3px solid #E87B35; padding-left: 16px; vertical-align: middle;">
+                <p style="margin: 0 0 2px; font-size: 16px; font-weight: 700; color: #1A1A2E;">Venkatesh G</p>
+                <p style="margin: 0 0 4px; font-size: 13px; color: #E87B35; font-weight: 600;">Founder, AppletPod</p>
+                <p style="margin: 0 0 8px; font-size: 12px; color: #888;">Interactive learning applets — built fast, built right</p>
+                <p style="margin: 0; font-size: 12px;">
+                  <a href="https://appletpod.com/" style="color: #E87B35; text-decoration: none;">appletpod.com</a>
+                  <span style="color: #ccc; margin: 0 6px;">|</span>
+                  <a href="https://www.linkedin.com/in/venkatesh-golisetti/" style="color: #0A66C2; text-decoration: none;">LinkedIn</a>
+                  <span style="color: #ccc; margin: 0 6px;">|</span>
+                  <a href="https://cal.com/venkatesh.g/30min" style="color: #1A1A2E; text-decoration: none;">Book a Call</a>
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
       `,
     });
@@ -166,6 +185,26 @@ export async function POST(request: NextRequest) {
           <div style="margin-top: 24px; padding: 16px; background: #F7F5F3; border-radius: 8px;">
             <p style="margin: 0; font-size: 13px; color: #1A1A2E60;">Submission ID: ${submissionId}</p>
           </div>
+          <hr style="border: none; border-top: 1px solid #EDEBE8; margin: 32px 0 24px;" />
+          <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+            <tr>
+              <td style="padding-right: 16px; vertical-align: middle;">
+                <img src="https://appletpod.com/logo.png" alt="AppletPod" width="60" style="display: block; width: 60px;" />
+              </td>
+              <td style="border-left: 3px solid #E87B35; padding-left: 16px; vertical-align: middle;">
+                <p style="margin: 0 0 2px; font-size: 16px; font-weight: 700; color: #1A1A2E;">Venkatesh G</p>
+                <p style="margin: 0 0 4px; font-size: 13px; color: #E87B35; font-weight: 600;">Founder, AppletPod</p>
+                <p style="margin: 0 0 8px; font-size: 12px; color: #888;">Interactive learning applets — built fast, built right</p>
+                <p style="margin: 0; font-size: 12px;">
+                  <a href="https://appletpod.com/" style="color: #E87B35; text-decoration: none;">appletpod.com</a>
+                  <span style="color: #ccc; margin: 0 6px;">|</span>
+                  <a href="https://www.linkedin.com/in/venkatesh-golisetti/" style="color: #0A66C2; text-decoration: none;">LinkedIn</a>
+                  <span style="color: #ccc; margin: 0 6px;">|</span>
+                  <a href="https://cal.com/venkatesh.g/30min" style="color: #1A1A2E; text-decoration: none;">Book a Call</a>
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
       `,
     });

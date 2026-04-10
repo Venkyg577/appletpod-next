@@ -23,6 +23,12 @@ export function Footer() {
             Terms of Service
           </a>
           <a
+            href="/refund-policy"
+            className="hover:text-white/60 transition-colors duration-200"
+          >
+            Refund Policy
+          </a>
+          <a
             href="https://www.linkedin.com/company/appletpod"
             target="_blank"
             rel="noopener noreferrer"

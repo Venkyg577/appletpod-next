@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, MoveRight } from "lucide-react";
+import { Check, MoveRight, Gift } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useCurrency } from "@/hooks/useCurrency";
 
@@ -172,6 +172,24 @@ export function Pricing() {
           <p className="text-sm text-charcoal/45">
             Agencies charge $1,500+ per applet. We start at $175.
           </p>
+        </div>
+
+        {/* Free applet CTA */}
+        <div className="mt-10 rounded-2xl bg-accent-light border border-accent/20 px-6 py-6 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          <div className="flex-1">
+            <p className="font-heading font-bold text-charcoal text-lg mb-1">
+              Not ready to commit? Get your first applet free.
+            </p>
+            <p className="text-sm text-charcoal/60">
+              Tell us what you want to teach. We&apos;ll build a real applet and show you exactly what you&apos;d get.
+            </p>
+          </div>
+          <a
+            href="/free-applet"
+            className="shrink-0 inline-flex items-center gap-2 h-11 px-6 rounded-xl bg-accent text-white text-base font-semibold hover:bg-accent-hover transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 shadow-sm shadow-accent/20 whitespace-nowrap"
+          >
+            <Gift className="w-4 h-4" /> Get Your Free Applet
+          </a>
         </div>
       </motion.div>
     </section>

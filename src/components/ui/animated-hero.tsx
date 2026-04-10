@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, ArrowDown } from "lucide-react";
+import { MoveRight, ArrowDown, Gift } from "lucide-react";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -69,16 +69,16 @@ function Hero() {
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="#proof"
+              href="/free-applet"
               className="inline-flex items-center justify-center gap-2 h-14 px-8 text-base font-medium rounded-lg bg-accent text-white hover:bg-accent-hover cursor-pointer shadow-lg shadow-accent/25 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              See it in action <ArrowDown className="w-4 h-4" />
+              <Gift className="w-4 h-4" /> Get Your Free Applet
             </a>
             <a
-              href="https://cal.com/venkatesh.g/30min"
+              href="#proof"
               className="inline-flex items-center justify-center gap-2 h-14 px-8 text-base font-medium rounded-lg border border-border bg-background hover:bg-muted cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              Book a Call <MoveRight className="w-4 h-4" />
+              See it in action <ArrowDown className="w-4 h-4" />
             </a>
           </div>
           <p className="text-sm text-charcoal/40 font-medium tracking-wide">

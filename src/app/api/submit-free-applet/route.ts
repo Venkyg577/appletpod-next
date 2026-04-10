@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to the client
     const { data: clientEmailData, error: clientEmailError } = await resend.emails.send({
-      from: "AppletPod <onboarding@resend.dev>",
+      from: "Venkatesh from AppletPod <venkatesh@appletpod.com>",
       to: work_email,
       subject: "We got your applet request — AppletPod",
       html: `
@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to Venkatesh
     const { data: adminEmailData, error: adminEmailError } = await resend.emails.send({
-      from: "AppletPod <onboarding@resend.dev>",
+      from: "Venkatesh from AppletPod <venkatesh@appletpod.com>",
       to: "Venkatesh@appletpod.com",
       subject: `New free applet request from ${company_name}`,
       html: `

@@ -84,7 +84,7 @@ export default async function AppletPage({
         <div className="rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] mb-12">
           <div className="relative w-full" style={{ paddingBottom: "62.5%" }}>
             <iframe
-              src={`/demos${applet.demoUrl}`}
+              src={`https://demos.appletpod.com${applet.demoUrl}`}
               title={applet.title}
               className="absolute inset-0 w-full h-full border-0"
               allow="fullscreen"
@@ -98,7 +98,7 @@ export default async function AppletPage({
             Want one like this?
           </p>
           <p className="text-white/60 mb-6 max-w-md mx-auto">
-            Tell us your topic and grade level — we&apos;ll build you a free applet, no commitment needed.
+            Tell us your topic and audience — we&apos;ll build you a free applet, no commitment needed.
           </p>
           <a
             href="/free-applet"

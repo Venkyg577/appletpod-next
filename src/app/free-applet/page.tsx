@@ -303,7 +303,7 @@ export default function FreeAppletPage() {
               Let&apos;s build your first applet — free.
             </h1>
             <p className="text-lg text-charcoal/60 leading-relaxed">
-              Tell us a bit about yourself and what you want to teach. We&apos;ll take it from there.
+              Tell us a bit about yourself and what you want to build. We&apos;ll take it from there.
             </p>
           </motion.div>
 
@@ -421,7 +421,7 @@ export default function FreeAppletPage() {
                 </Field>
                 <Field
                   label="Anything else we should know?"
-                  hint="Optional — your audience, learning goals, constraints, etc."
+                  hint="Optional — your audience, goals, constraints, etc."
                 >
                   <textarea
                     rows={4}

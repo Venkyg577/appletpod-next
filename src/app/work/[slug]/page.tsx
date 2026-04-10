@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Maximize2 } from "lucide-react";
 import registry from "../../../../content/applets/registry.json";
 
 type Applet = (typeof registry)[number];
@@ -81,10 +81,19 @@ export default async function AppletPage({
         </div>
 
         {/* Iframe */}
-        <div className="rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] mb-12">
+        <div className="group/iframe rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] mb-12 relative">
+          <a
+            href={`https://demos.appletpod.com${applet.demoUrl}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-3 right-3 z-10 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-warm-dark/40 text-charcoal/50 hover:text-charcoal hover:bg-white transition-all duration-200 opacity-0 group-hover/iframe:opacity-100"
+            title="Open in fullscreen"
+          >
+            <Maximize2 className="w-4 h-4" />
+          </a>
           <div className="relative w-full" style={{ paddingBottom: "62.5%" }}>
             <iframe
-              src={`/demos${applet.demoUrl}`}
+              src={`https://demos.appletpod.com${applet.demoUrl}`}
               title={applet.title}
               className="absolute inset-0 w-full h-full border-0"
               allow="fullscreen"

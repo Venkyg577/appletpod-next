@@ -86,7 +86,7 @@ export default function WorkPage() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center rounded-2xl bg-warm border border-warm-dark p-10">
           <p className="font-heading text-xl font-semibold text-charcoal mb-2">
-            Want an applet built for your curriculum?
+            Want an applet built for your content?
           </p>
           <p className="text-charcoal/60 mb-6">
             We&apos;ll design, storyboard, and build it — ready to embed anywhere.

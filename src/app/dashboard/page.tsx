@@ -61,7 +61,7 @@ function LoginScreen({ onLogin }: { onLogin: (token: string) => void }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F0F1A] flex items-center justify-center px-4">
+    <div className="min-h-[calc(100dvh-7rem)] pt-28 pb-16 bg-[#0F0F1A] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <span className="text-2xl font-bold" style={{ color: "#E87B35" }}>
@@ -318,9 +318,9 @@ export default function DashboardPage() {
     filterStatus === "all" ? submissions : submissions.filter((s) => s.status === filterStatus);
 
   return (
-    <div className="min-h-screen bg-[#0F0F1A] text-white">
-      {/* Header */}
-      <div className="border-b border-white/10 bg-[#0F0F1A]/80 backdrop-blur-sm sticky top-0 z-10">
+    <div className="min-h-[calc(100dvh-7rem)] pt-28 pb-16 bg-[#0F0F1A] text-white">
+      {/* Admin toolbar (below site header) */}
+      <div className="border-b border-white/10 bg-[#0F0F1A]/80 backdrop-blur-sm sticky top-28 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <span className="text-lg font-bold" style={{ color: "#E87B35" }}>

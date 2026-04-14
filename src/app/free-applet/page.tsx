@@ -2,9 +2,11 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Paperclip, X, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const CONTENT_FORMAT_OPTIONS = [
   "Slides or presentations",
@@ -212,6 +214,10 @@ export default function FreeAppletPage() {
     }
 
     setSubmitting(true);
+    trackEvent("cta_click", {
+      cta_type: "free_applet_submit",
+      source: "free_applet_form",
+    });
 
     try {
       const formData = new FormData();
@@ -243,6 +249,11 @@ export default function FreeAppletPage() {
       }
 
       setSubmitted(true);
+      trackEvent("lead_submit", {
+        source: "free_applet_form",
+        content_format: form.content_format || "unknown",
+        attachment_count: files.length,
+      });
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       setSubmitError("Network error. Please check your connection and try again.");
@@ -271,12 +282,12 @@ export default function FreeAppletPage() {
             <p className="text-lg text-charcoal/60 leading-relaxed max-w-sm mx-auto mb-8">
               We&apos;ll review your details and reach out within 2 business days to schedule a discovery call.
             </p>
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-medium transition-colors underline underline-offset-4"
             >
               Back to AppletPod
-            </a>
+            </Link>
           </motion.div>
         </main>
         <Footer />

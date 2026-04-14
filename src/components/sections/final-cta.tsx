@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MoveRight } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function FinalCta() {
   return (
@@ -30,6 +31,12 @@ export function FinalCta() {
               href="https://cal.com/venkatesh.g/30min"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("cta_click", {
+                  cta_type: "book_call",
+                  source: "final_cta",
+                })
+              }
               className="inline-flex items-center justify-center gap-2 w-full h-14 text-base font-medium rounded-lg bg-accent text-white hover:bg-accent-hover cursor-pointer shadow-lg shadow-accent/30 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               Book a Call <MoveRight className="w-5 h-5" />

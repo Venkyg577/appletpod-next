@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check, MoveRight, Gift } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useCurrency } from "@/hooks/useCurrency";
+import { trackEvent } from "@/lib/analytics";
 
 const enterpriseTier = {
   name: "Enterprise / Bulk",
@@ -113,6 +114,12 @@ export function Pricing() {
               {/* CTA */}
               <a
                 href="https://cal.com/venkatesh.g/30min"
+                onClick={() =>
+                  trackEvent("cta_click", {
+                    cta_type: "book_call",
+                    source: `pricing_${tier.name.toLowerCase().replace(/\s+/g, "_")}`,
+                  })
+                }
                 className={`w-full mb-6 inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-base font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   tier.isPrimary
                     ? "bg-accent hover:bg-accent-hover text-white"
@@ -148,6 +155,12 @@ export function Pricing() {
 
             <a
               href="https://cal.com/venkatesh.g/30min"
+              onClick={() =>
+                trackEvent("cta_click", {
+                  cta_type: "book_call",
+                  source: "pricing_enterprise",
+                })
+              }
               className="w-full mb-6 inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-sm font-medium bg-warm hover:bg-warm-dark text-charcoal border border-charcoal/10 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Talk to us <MoveRight className="w-4 h-4" />
@@ -186,6 +199,12 @@ export function Pricing() {
           </div>
           <a
             href="/free-applet"
+            onClick={() =>
+              trackEvent("cta_click", {
+                cta_type: "free_applet",
+                source: "pricing_footer",
+              })
+            }
             className="shrink-0 inline-flex items-center gap-2 h-11 px-6 rounded-xl bg-accent text-white text-base font-semibold hover:bg-accent-hover transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 shadow-sm shadow-accent/20 whitespace-nowrap"
           >
             <Gift className="w-4 h-4" /> Get Your Free Applet

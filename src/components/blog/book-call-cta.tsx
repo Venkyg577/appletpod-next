@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function BookCallCTA() {
   return (
@@ -16,6 +19,12 @@ export function BookCallCTA() {
         href="https://cal.com/venkatesh.g/30min"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent("cta_click", {
+            cta_type: "book_call",
+            source: "blog_book_call_cta",
+          })
+        }
         className="inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-accent text-white text-base font-medium hover:bg-accent-hover transition-colors"
       >
         Book a Call

@@ -1,5 +1,6 @@
 import { MoveRight } from "lucide-react";
 import registry from "../../../content/applets/registry.json";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 
 const categoryColors: Record<string, { bg: string; text: string }> = {
   Mathematics: { bg: "bg-blue-50", text: "text-blue-700" },
@@ -70,13 +71,18 @@ export default function WorkPage() {
 
                 {/* Footer link */}
                 <div className="px-6 pb-5">
-                  <a
+                  <TrackedLink
                     href={`/work/${applet.slug}`}
+                    eventName="applet_start"
+                    eventParams={{
+                      applet_slug: applet.slug,
+                      source: "work_grid",
+                    }}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200"
                   >
                     View applet
                     <MoveRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </a>
+                  </TrackedLink>
                 </div>
               </div>
             );
@@ -91,12 +97,17 @@ export default function WorkPage() {
           <p className="text-charcoal/60 mb-6">
             We&apos;ll design, storyboard, and build it — ready to embed anywhere.
           </p>
-          <a
+          <TrackedLink
             href="/free-applet"
+            eventName="cta_click"
+            eventParams={{
+              cta_type: "free_applet",
+              source: "work_bottom_cta",
+            }}
             className="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover transition-colors duration-200"
           >
             Request a free applet
-          </a>
+          </TrackedLink>
         </div>
       </div>
     </main>

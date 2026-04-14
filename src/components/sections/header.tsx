@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const navLinks = [
   { href: "#pricing", label: "Pricing" },
@@ -60,6 +61,12 @@ export function Header() {
           })}
           <a
             href="https://cal.com/venkatesh.g/30min"
+            onClick={() =>
+              trackEvent("cta_click", {
+                cta_type: "book_call",
+                source: "header_desktop",
+              })
+            }
             className="inline-flex items-center justify-center h-9 px-4 rounded-lg bg-accent text-white text-base font-medium hover:bg-accent-hover cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             Book a Call
@@ -104,7 +111,13 @@ export function Header() {
             })}
             <a
               href="https://cal.com/venkatesh.g/30min"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                trackEvent("cta_click", {
+                  cta_type: "book_call",
+                  source: "header_mobile",
+                });
+                setIsOpen(false);
+              }}
               className="w-full text-center py-2.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors cursor-pointer mt-1"
             >
               Book a Call

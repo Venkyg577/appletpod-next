@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { MoveRight, Maximize2 } from "lucide-react";
 import registry from "../../../../content/applets/registry.json";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 
 type Applet = (typeof registry)[number];
 
@@ -55,9 +57,9 @@ export default async function AppletPage({
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-charcoal/50">
-          <a href="/work" className="hover:text-charcoal transition-colors">
+          <Link href="/work" className="hover:text-charcoal transition-colors">
             Our Work
-          </a>
+          </Link>
           <span>/</span>
           <span className="text-charcoal/80">{applet.title}</span>
         </nav>
@@ -82,15 +84,20 @@ export default async function AppletPage({
 
         {/* Iframe */}
         <div className="group/iframe rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] mb-12 relative">
-          <a
+          <TrackedLink
             href={`https://demos.appletpod.com${applet.demoUrl}`}
             target="_blank"
             rel="noopener noreferrer"
+            eventName="applet_start"
+            eventParams={{
+              applet_slug: applet.slug,
+              source: "work_detail_fullscreen",
+            }}
             className="absolute top-3 right-3 z-10 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-warm-dark/40 text-charcoal/50 hover:text-charcoal hover:bg-white transition-all duration-200 opacity-0 group-hover/iframe:opacity-100"
             title="Open in fullscreen"
           >
             <Maximize2 className="w-4 h-4" />
-          </a>
+          </TrackedLink>
           <div className="relative w-full" style={{ paddingBottom: "62.5%" }}>
             <iframe
               src={`https://demos.appletpod.com${applet.demoUrl}`}
@@ -109,13 +116,19 @@ export default async function AppletPage({
           <p className="text-white/60 mb-6 max-w-md mx-auto">
             Tell us your topic and grade level — we&apos;ll build you a free applet, no commitment needed.
           </p>
-          <a
+          <TrackedLink
             href="/free-applet"
+            eventName="cta_click"
+            eventParams={{
+              cta_type: "free_applet",
+              source: "work_detail_cta",
+              applet_slug: applet.slug,
+            }}
             className="inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover transition-colors duration-200"
           >
             Request a free applet
             <MoveRight className="w-4 h-4" />
-          </a>
+          </TrackedLink>
         </div>
 
         {/* Related */}
@@ -128,9 +141,14 @@ export default async function AppletPage({
               {related.map((rel) => {
                 const relCat = getCategoryStyle(rel.category);
                 return (
-                  <a
+                  <TrackedLink
                     key={rel.slug}
                     href={`/work/${rel.slug}`}
+                    eventName="applet_start"
+                    eventParams={{
+                      applet_slug: rel.slug,
+                      source: "work_related",
+                    }}
                     className="group flex flex-col rounded-2xl border border-warm-dark bg-white p-6 hover:shadow-[0_4px_24px_rgba(26,26,46,0.08)] hover:border-warm-dark/80 transition-all duration-200"
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -153,7 +171,7 @@ export default async function AppletPage({
                       View applet
                       <MoveRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </span>
-                  </a>
+                  </TrackedLink>
                 );
               })}
             </div>

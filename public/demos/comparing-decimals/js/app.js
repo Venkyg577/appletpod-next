@@ -71,6 +71,8 @@ let appState = {
   isEqualComparison: false,
   completedByIndex: {},
   pickerPulseDecimals: false,
+  pickerScrollHintVisible: true,
+  compareTapHintVisible: true,
 };
 
 function currentProblem() {
@@ -145,33 +147,78 @@ function screenToLocal(clientX, clientY) {
   };
 }
 
+function readClientPoint(evt) {
+  if (!evt) return null;
+  if (typeof evt.clientX === 'number' && typeof evt.clientY === 'number') {
+    return { x: evt.clientX, y: evt.clientY };
+  }
+  var touch = null;
+  if (evt.touches && evt.touches.length) touch = evt.touches[0];
+  else if (evt.changedTouches && evt.changedTouches.length) touch = evt.changedTouches[0];
+  if (touch && typeof touch.clientX === 'number' && typeof touch.clientY === 'number') {
+    return { x: touch.clientX, y: touch.clientY };
+  }
+  return null;
+}
+
 function attachNumberBoxDrag(which, ev) {
+  if (appState.dragging) return;
   var e = ev;
-  e.preventDefault();
+  if (e && e.cancelable) e.preventDefault();
   if (window.sound) window.sound.playClickSound();
-  var local = screenToLocal(e.clientX, e.clientY);
+  var startPoint = readClientPoint(e);
+  if (!startPoint) return;
+  var local = screenToLocal(startPoint.x, startPoint.y);
   appState.dragging = which;
   appState.dragGhostPos = { x: local.x, y: local.y };
   renderApp();
 
-  function onMove(pe) {
-    var pos = screenToLocal(pe.clientX, pe.clientY);
+  function onMove(moveEvt) {
+    var p = readClientPoint(moveEvt);
+    if (!p) return;
+    if (moveEvt && moveEvt.cancelable) moveEvt.preventDefault();
+    var pos = screenToLocal(p.x, p.y);
     appState.dragGhostPos = { x: pos.x, y: pos.y };
     renderApp();
   }
 
-  function onUp(pe) {
+  function cleanup() {
     document.removeEventListener('pointermove', onMove);
     document.removeEventListener('pointerup', onUp);
     document.removeEventListener('pointercancel', onUp);
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend', onUp);
+    document.removeEventListener('touchcancel', onUp);
+  }
+
+  function onUp(endEvt) {
+    cleanup();
 
     var targetRow = which === 'first' ? '0' : '1';
     var rowEl = document.querySelector('.place-grid .grid-row[data-row="' + targetRow + '"]');
     var gridEl = document.querySelector('.place-grid');
     var rRow = rowEl ? rowEl.getBoundingClientRect() : null;
     var rGrid = gridEl ? gridEl.getBoundingClientRect() : null;
-    var hit = (rRow && pointInRect(pe.clientX, pe.clientY, rRow)) ||
-              (rGrid && pointInRect(pe.clientX, pe.clientY, rGrid));
+    var endPoint = readClientPoint(endEvt) || appState.dragGhostPos;
+    var hit = false;
+    if (endPoint) {
+      var ex = endPoint.x;
+      var ey = endPoint.y;
+      // If fallback provided local coordinates, convert to screen-like values using wrapper rect.
+      if (appState.dragGhostPos && endPoint === appState.dragGhostPos) {
+        var wrapper = document.querySelector('.responsive-wrapper');
+        if (wrapper) {
+          var rect = wrapper.getBoundingClientRect();
+          var sx = rect.width / 1920;
+          var sy = rect.height / 1080;
+          ex = rect.left + endPoint.x * sx;
+          ey = rect.top + endPoint.y * sy;
+        }
+      }
+      hit = (rRow && pointInRect(ex, ey, rRow)) || (rGrid && pointInRect(ex, ey, rGrid));
+    }
 
     appState.dragging = null;
     appState.dragGhostPos = null;
@@ -183,9 +230,17 @@ function attachNumberBoxDrag(which, ev) {
     }
   }
 
-  document.addEventListener('pointermove', onMove);
-  document.addEventListener('pointerup', onUp);
-  document.addEventListener('pointercancel', onUp);
+  if (window.PointerEvent) {
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
+    document.addEventListener('pointercancel', onUp);
+  } else {
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+    document.addEventListener('touchcancel', onUp);
+  }
 }
 
 function introStripDisplay() {
@@ -293,6 +348,11 @@ function changePracticeIndex(idx) {
   });
 }
 
+function dismissPickerScrollHint() {
+  if (!appState.pickerScrollHintVisible) return;
+  setState({ pickerScrollHintVisible: false });
+}
+
 function comparisonStepsForCurrent() {
   const prob = currentProblem();
   return window.DecimalPlaceValue.comparisonStepsUntilDiff(prob.a, prob.b);
@@ -302,6 +362,7 @@ function beginComparePractice() {
   const prob = currentProblem();
   clearScheduled();
   window.sound && window.sound.playClickSound();
+  appState.compareTapHintVisible = false;
   if (prob.extended_only) {
     setState({ phase: 'extended' });
     return;
@@ -417,6 +478,8 @@ function restartFromSummary() {
     workedStepIndex: 0,
     completedByIndex: {},
     isEqualComparison: false,
+    pickerScrollHintVisible: true,
+    compareTapHintVisible: true,
   });
 }
 
@@ -446,13 +509,56 @@ function buildComparisonStrip(opts) {
     { className: stripClass },
     createElement('div', {
       className: boxAClass,
+      'data-drag-key': dragFirst ? 'first' : null,
       onPointerDown: dragFirst ? function (e) { attachNumberBoxDrag('first', e); } : null,
+      onTouchStart: dragFirst ? function (e) { attachNumberBoxDrag('first', e); } : null,
+      onMouseDown: dragFirst ? function (e) { attachNumberBoxDrag('first', e); } : null,
     }, numAContent),
     createElement('div', { className: slotClass }, slotContent),
     createElement('div', {
       className: boxBClass,
+      'data-drag-key': dragSecond ? 'second' : null,
       onPointerDown: dragSecond ? function (e) { attachNumberBoxDrag('second', e); } : null,
+      onTouchStart: dragSecond ? function (e) { attachNumberBoxDrag('second', e); } : null,
+      onMouseDown: dragSecond ? function (e) { attachNumberBoxDrag('second', e); } : null,
     }, numBContent)
+  );
+}
+
+function buildGestureHint(type, extraClass) {
+  var src = type === 'tap'
+    ? 'assets/finger tap.gif'
+    : type === 'drag'
+      ? 'assets/finger swipe right.gif'
+      : 'assets/finger swipe up.gif';
+  var cls = 'gesture-hint gesture-hint--' + type + (extraClass ? ' ' + extraClass : '');
+  return createElement(
+    'div',
+    { className: cls, 'aria-hidden': 'true' },
+    createElement('img', {
+      className: 'gesture-hint-img',
+      src: src,
+      alt: '',
+      draggable: 'false',
+    })
+  );
+}
+
+function buildGestureFlight(kind, sourceKey, targetRow) {
+  return createElement(
+    'div',
+    {
+      className: 'gesture-flight gesture-flight--' + kind,
+      'data-source-key': sourceKey,
+      'data-target-row': String(targetRow),
+      'aria-hidden': 'true',
+    },
+    createElement('img', {
+      className: 'gesture-flight-img',
+      src: kind === 'drag' ? 'assets/finger swipe right.gif' : 'assets/finger swipe up.gif',
+      alt: '',
+      draggable: 'false',
+    })
   );
 }
 
@@ -495,7 +601,7 @@ function buildIntro() {
     const beginCol = createElement(
       'div',
       { className: 'intro-begin-wrap' },
-      createElement('div', { className: 'tap-begin-label interactive-text' }, t('content-ui.instructions.tap_to_begin')),
+      buildGestureHint('tap', 'gesture-hint--begin'),
       NextChevronCmp({ pulsate: true, onClick: introNext })
     );
     const mid = createElement(
@@ -564,12 +670,17 @@ function buildIntro() {
     introBelowGrid = createElement(
       'div',
       { className: 'intro-compare-zone' },
-      OperatorPickerCmp({
-        onPick: handleIntroOperatorPick,
-        disabled: false,
-        wrongSym: appState.wrongSym,
-        wrongKey: appState.operatorTeeterNonce,
-      })
+      createElement(
+        'div',
+        { className: 'operator-picker-overlay-wrap' },
+        OperatorPickerCmp({
+          onPick: handleIntroOperatorPick,
+          disabled: false,
+          wrongSym: appState.wrongSym,
+          wrongKey: appState.operatorTeeterNonce,
+        }),
+        buildGestureHint('tap', 'gesture-hint--operator')
+      )
     );
   } else if (sub === 6 || sub === 7) {
     introBelowGrid = createElement(
@@ -615,7 +726,17 @@ function buildIntro() {
 
   const mid = createElement('div', { className: 'intro-mid' }, midInner);
 
-  return createElement('div', { className: 'intro-shell' }, header, mid, footer, dragGhost);
+  return createElement(
+    'div',
+    { className: 'intro-shell' },
+    header,
+    mid,
+    footer,
+    dragGhost,
+    (drag1 || drag2) && !appState.dragging
+      ? buildGestureFlight('drag', drag1 ? 'first' : 'second', drag1 ? 0 : 1)
+      : null
+  );
 }
 
 function compareSummary(prob) {
@@ -694,6 +815,8 @@ function buildPractice() {
     highlightPlace: practiceHighlightPlace,
     stripOpChar: stripOpChar,
     completedByIndex: appState.completedByIndex,
+    showScrollHint: appState.pickerScrollHintVisible,
+    onFirstInteract: dismissPickerScrollHint,
   });
 
   const compareDisabled = appState.practiceSub !== 'picker';
@@ -716,15 +839,20 @@ function buildPractice() {
       { className: 'intro-compare-zone' },
       createElement(
         'div',
-        { className: 'footer-actions' },
-        AppletButtonCmp({
-          label: t('standard-ui.buttons.compare'),
-          disabled: compareDisabled,
-          impending: showCompareImpending ? 'clickNext' : '',
-          onClick: function () {
-            if (!compareDisabled) beginComparePractice();
-          },
-        })
+        { className: 'compare-button-overlay-wrap' },
+        createElement(
+          'div',
+          { className: 'footer-actions' },
+          AppletButtonCmp({
+            label: t('standard-ui.buttons.compare'),
+            disabled: compareDisabled,
+            impending: showCompareImpending ? 'clickNext' : '',
+            onClick: function () {
+              if (!compareDisabled) beginComparePractice();
+            },
+          })
+        ),
+        appState.compareTapHintVisible ? buildGestureHint('tap', 'gesture-hint--compare') : null
       )
     );
   } else if (workedZone) {
@@ -848,12 +976,17 @@ function buildWorkedInteractive(prob, steps, digitLine, op, diff) {
     return createElement(
       'div',
       { className: 'practice-operator-zone' },
-      OperatorPickerCmp({
-        onPick: handleWorkedOperatorPick,
-        disabled: false,
-        wrongSym: appState.wrongSym,
-        wrongKey: appState.operatorTeeterNonce,
-      })
+      createElement(
+        'div',
+        { className: 'operator-picker-overlay-wrap' },
+        OperatorPickerCmp({
+          onPick: handleWorkedOperatorPick,
+          disabled: false,
+          wrongSym: appState.wrongSym,
+          wrongKey: appState.operatorTeeterNonce,
+        }),
+        buildGestureHint('tap', 'gesture-hint--operator')
+      )
     );
   }
 
@@ -999,6 +1132,90 @@ function renderApp() {
   root.innerHTML = '';
   const tree = App();
   if (tree) root.appendChild(tree);
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(syncGestureFlights);
+  });
+}
+
+function syncGestureFlights() {
+  var flights = document.querySelectorAll('.gesture-flight--drag');
+  if (!flights.length) return;
+
+  flights.forEach(function (flight) {
+    var shell = flight.closest('.intro-shell');
+    if (!shell) return;
+
+    var sourceKey = flight.getAttribute('data-source-key');
+    var targetRow = flight.getAttribute('data-target-row');
+    var source = shell.querySelector('.number-box[data-drag-key="' + sourceKey + '"]');
+    var target = shell.querySelector('.place-grid .grid-row[data-row="' + targetRow + '"]');
+    if (!source || !target) return;
+
+    var shellRect = shell.getBoundingClientRect();
+    var sourceRect = source.getBoundingClientRect();
+    var targetRect = target.getBoundingClientRect();
+
+    // DOMRect values are in post-transform (screen) pixels.
+    // Convert to local shell coordinates so placement stays correct under wrapper scaling.
+    var scaleX = shellRect.width ? shell.offsetWidth / shellRect.width : 1;
+    var scaleY = shellRect.height ? shell.offsetHeight / shellRect.height : 1;
+
+    var startCenterX = (sourceRect.left - shellRect.left + sourceRect.width * 0.5) * scaleX;
+    var startCenterY = (sourceRect.top - shellRect.top + sourceRect.height * 0.5) * scaleY;
+    var endCenterX = (targetRect.left - shellRect.left + targetRect.width * 0.5) * scaleX;
+    var endCenterY = (targetRect.top - shellRect.top + targetRect.height * 0.5) * scaleY;
+
+    // Anchor the gesture element around its visual center for predictable start/end alignment.
+    var img = flight.querySelector('.gesture-flight-img');
+    var imgW = img ? img.clientWidth : 104;
+    var imgH = img ? img.clientHeight : 104;
+    var startX = startCenterX - imgW * 0.5;
+    var startY = startCenterY - imgH * 0.5;
+    var endX = endCenterX - imgW * 0.5;
+    var endY = endCenterY - imgH * 0.5;
+
+    flight.style.left = startX + 'px';
+    flight.style.top = startY + 'px';
+    flight.style.opacity = '1';
+
+    var dx = endX - startX;
+    var dy = endY - startY;
+
+    flight.getAnimations().forEach(function (anim) { anim.cancel(); });
+    if (img) img.getAnimations().forEach(function (anim) { anim.cancel(); });
+
+    flight.animate(
+      [
+        { opacity: 0, transform: 'translate(0px, 0px) scale(0.9)' },
+        { opacity: 1, transform: 'translate(0px, 0px) scale(1)', offset: 0.12 },
+        { opacity: 1, transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(1)', offset: 0.7 },
+        { opacity: 1, transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(0.96)', offset: 0.84 },
+        { opacity: 0, transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(0.92)' },
+      ],
+      {
+        duration: 2400,
+        easing: 'ease-in-out',
+        iterations: Infinity,
+      }
+    );
+
+    if (img) {
+      img.animate(
+        [
+          { transform: 'scale(1) rotate(-8deg)' },
+          { transform: 'scale(1.04) rotate(-3deg)', offset: 0.2 },
+          { transform: 'scale(1) rotate(0deg)', offset: 0.7 },
+          { transform: 'scale(0.9) rotate(0deg)', offset: 0.82 },
+          { transform: 'scale(1) rotate(-8deg)' },
+        ],
+        {
+          duration: 2400,
+          easing: 'ease-in-out',
+          iterations: Infinity,
+        }
+      );
+    }
+  });
 }
 
 function initializeApp() {

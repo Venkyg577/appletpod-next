@@ -5,7 +5,11 @@
     "description": "Drag and drop to compare decimals using place value — students build intuition for number magnitude through hands-on manipulation.",
     "category": "Mathematics",
     "grade": "G4-G5",
-    "tags": ["decimals", "place-value", "drag-and-drop"],
+    "tags": [
+      "decimals",
+      "place-value",
+      "drag-and-drop"
+    ],
     "status": "published",
     "demoUrl": "/comparing-decimals/",
     "thumbnail": null
@@ -16,9 +20,29 @@
     "description": "Add and remove bulbs to explore how brightness changes in parallel vs series circuits — misconception-busting physics made tangible.",
     "category": "Physics",
     "grade": "G6-G8",
-    "tags": ["circuits", "physics", "simulation"],
+    "tags": [
+      "circuits",
+      "physics",
+      "simulation"
+    ],
     "status": "published",
     "demoUrl": "/parallel-series-circuits/",
+    "thumbnail": null
+  },
+  {
+    "slug": "biology-lab",
+    "title": "Biology Lab Safety: Spot the Contamination Risks",
+    "description": "Identify three contamination risks in a lab setup to prevent sample integrity issues — interactive risk assessment through visual inspection and feedback.",
+    "category": "Biology",
+    "grade": "G9-G12",
+    "tags": [
+      "biology",
+      "lab-safety",
+      "risk-assessment",
+      "interactive"
+    ],
+    "status": "published",
+    "demoUrl": "/biology-lab/",
     "thumbnail": null
   }
 ]

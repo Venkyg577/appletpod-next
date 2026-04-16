@@ -19,6 +19,9 @@ const tabConfig = [
 
 async function loadRegistry(): Promise<Applet[]> {
   const response = await fetch("/content/applets/registry.json");
+  if (!response.ok) {
+    throw new Error(`Failed to load registry: ${response.status}`);
+  }
   return response.json();
 }
 

@@ -5,24 +5,54 @@ import { motion } from "framer-motion";
 import { Zap, Calculator } from "lucide-react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
-const tabs = [
-  {
-    id: "circuits",
-    label: "Circuits",
-    title: "Parallel & Series Circuits",
-    desc: "Explore how bulbs behave in parallel vs series circuits",
-    icon: Zap,
-    src: "/demos/parallel-sequential/index.html",
-  },
-  {
-    id: "decimals",
-    label: "Decimals",
-    title: "Comparing Decimal Numbers",
-    desc: "Visualise and compare decimal place values interactively",
-    icon: Calculator,
-    src: "/demos/comparing-decimals/index.html",
-  },
+interface Applet {
+  slug: string;
+  title: string;
+  description: string;
+  demoUrl: string;
+}
+
+const tabConfig = [
+  { id: "circuits", slug: "parallel-series-circuits", icon: Zap },
+  { id: "decimals", slug: "comparing-decimals", icon: Calculator },
 ];
+
+async function loadRegistry(): Promise<Applet[]> {
+  const response = await fetch("/content/applets/registry.json");
+  return response.json();
+}
+
+function buildTabs(applets: Applet[]) {
+  const registry = applets.reduce(
+    (acc, applet) => {
+      acc[applet.slug] = applet;
+      return acc;
+    },
+    {} as Record<string, Applet>
+  );
+
+  return tabConfig
+    .map(({ id, slug, icon }) => {
+      const applet = registry[slug];
+      if (!applet) return null;
+      return {
+        id,
+        label: applet.title.split("&")[0].trim(),
+        title: applet.title,
+        desc: applet.description,
+        icon,
+        src: applet.demoUrl.endsWith("/") ? applet.demoUrl + "index.html" : applet.demoUrl,
+      };
+    })
+    .filter(Boolean) as Array<{
+      id: string;
+      label: string;
+      title: string;
+      desc: string;
+      icon: typeof Zap;
+      src: string;
+    }>;
+}
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
   const [count, setCount] = useState(0);
@@ -76,7 +106,12 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 function TabbedDemos() {
   const [activeTab, setActiveTab] = useState("circuits");
   const [visible, setVisible] = useState(false);
+  const [tabs, setTabs] = useState<Array<{ id: string; label: string; title: string; desc: string; icon: typeof Zap; src: string }>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    loadRegistry().then(buildTabs).then(setTabs).catch(console.error);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;

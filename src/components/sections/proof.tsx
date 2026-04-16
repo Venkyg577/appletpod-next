@@ -41,7 +41,7 @@ function buildTabs(applets: Applet[]) {
         title: applet.title,
         desc: applet.description,
         icon,
-        src: applet.demoUrl.endsWith("/") ? applet.demoUrl + "index.html" : applet.demoUrl,
+        src: "/demos" + (applet.demoUrl.endsWith("/") ? applet.demoUrl + "index.html" : applet.demoUrl),
       };
     })
     .filter(Boolean) as Array<{

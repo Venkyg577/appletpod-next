@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { AppletEmbed } from "./applet-embed";
 
 function slugify(text: string): string {
   return text
@@ -144,4 +145,5 @@ export const mdxComponents: MDXComponents = {
       {children}
     </strong>
   ),
+  AppletEmbed,
 };

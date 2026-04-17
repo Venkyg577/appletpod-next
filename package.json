@@ -5,7 +5,7 @@
   "scripts": {
     "sync-gallery": "node scripts/sync-gallery.js",
     "dev": "npm run sync-gallery && next dev",
-    "build": "npm run sync-gallery && next build",
+    "build": "npm run sync-gallery && next build && node scripts/ping-indexnow.js",
     "start": "next start",
     "lint": "eslint"
   },

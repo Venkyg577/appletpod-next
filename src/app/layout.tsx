@@ -53,6 +53,24 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "AppletPod",
+  url: "https://appletpod.com",
+  logo: "https://appletpod.com/logo.png",
+  description: "Turn your curriculum into interactive applets. AI-powered, human-reviewed.",
+  sameAs: [
+    "https://twitter.com/appletpod",
+    "https://linkedin.com/company/appletpod",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Customer Service",
+    email: "hello@appletpod.com",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +90,13 @@ export default function RootLayout({
   gtag('js', new Date());
   gtag('config', 'G-JCFPPPL4S4', { debug_mode: true });
 `}</Script>
+        <Script
+          id="org-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </head>
       <body
         className={`${outfit.variable} ${workSans.variable} ${tiempos.variable} font-body antialiased bg-white text-charcoal`}

@@ -41,7 +41,11 @@ function getClusterLabel(cluster: string): string {
   const map: Record<string, string> = {
     "1-interactive-design": "Interactive Learning Design",
     "2-ai-edtech": "AI + EdTech",
+    "2-math-concepts": "Math Concepts & Misconceptions",
+    "2-science-concepts": "Science Concepts & Misconceptions",
     "3-building-products": "Building EdTech Products",
+    "3-science-skills": "Science Skills & Safety",
+    "interactive-content": "Interactive Content Design",
   };
   return map[cluster] || cluster;
 }

@@ -113,10 +113,10 @@ export function Pricing() {
 
               {/* CTA */}
               <a
-                href="https://cal.com/venkatesh.g/30min"
+                href="/free-applet"
                 onClick={() =>
                   trackEvent("cta_click", {
-                    cta_type: "book_call",
+                    cta_type: "free_applet",
                     source: `pricing_${tier.name.toLowerCase().replace(/\s+/g, "_")}`,
                   })
                 }
@@ -126,7 +126,7 @@ export function Pricing() {
                     : "bg-warm hover:bg-warm-dark text-charcoal border border-charcoal/10"
                 }`}
               >
-                Start with one applet <MoveRight className="w-4 h-4" />
+                <Gift className="w-4 h-4" /> Get your free applet
               </a>
 
               {/* Features */}
@@ -182,7 +182,7 @@ export function Pricing() {
 
         {/* Competitor contrast */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-charcoal/45">
+          <p className="text-sm text-accent">
             Agencies charge $1,500+ per applet. We start at $175.
           </p>
         </div>

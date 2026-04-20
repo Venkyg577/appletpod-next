@@ -3,6 +3,7 @@
 /**
  * Sync registry from gallery repo
  * Fetches registry.json from https://github.com/Venkyg577/appletpod-gallery
+ * Syncs all applets: comparing-decimals, parallel-series-circuits, biology-lab, equivalent-fractions
  */
 
 const fs = require('fs');

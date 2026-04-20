@@ -1,5 +1,6 @@
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/ui/animated-hero";
+import { BeforeAfter } from "@/components/sections/before-after";
 import { Problem } from "@/components/sections/problem";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { WhyAppletPod } from "@/components/sections/why-appletpod";
@@ -18,6 +19,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <BeforeAfter />
         <Problem />
         <HowItWorks />
         <WhyAppletPod />

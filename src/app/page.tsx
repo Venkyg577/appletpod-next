@@ -14,6 +14,7 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
+  // No-op touch to trigger a fresh production deployment.
   return (
     <>
       <Header />

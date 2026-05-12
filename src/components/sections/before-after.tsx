@@ -89,38 +89,61 @@ function BeforePlaceholder() {
   return (
     <div className="w-full aspect-[16/10] bg-gray-100 rounded-lg overflow-hidden relative border border-gray-200">
       <div className="absolute inset-0 flex flex-col">
+        {/* Title bar */}
         <div className="h-7 bg-[#2B579A] flex items-center px-2 gap-2 shrink-0">
           <div className="w-4 h-4 rounded-sm bg-white/90 text-[#2B579A] text-[8px] font-bold grid place-items-center">
             W
           </div>
-          <div className="h-2 w-24 rounded bg-white/40" />
+          <span className="text-white/80 text-[8px]">Area Worksheet.docx — Word</span>
           <div className="ml-auto flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
             <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
             <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
           </div>
         </div>
-        <div className="h-6 bg-gray-200 border-y border-gray-300 flex items-center px-2 gap-1.5 text-[8px] text-gray-500">
+        {/* Menu bar */}
+        <div className="h-5 bg-gray-200 border-y border-gray-300 flex items-center px-2 gap-1.5 text-[7px] text-gray-500 shrink-0">
           <span>File</span>
           <span>Home</span>
           <span>Insert</span>
-          <span className="ml-2 px-1 py-0.5 rounded bg-gray-300">Math Worksheet.docx</span>
+          <span>Layout</span>
+          <span>References</span>
+          <span className="ml-2 px-1 py-0.5 rounded bg-white border border-gray-300 text-gray-600">Area Worksheet.docx</span>
         </div>
-        <div className="flex-1 bg-[#ECECEC] p-2">
-          <div className="bg-white h-full rounded-sm border border-gray-300 p-3 flex flex-col gap-2">
-            <div className="h-2.5 w-2/3 rounded bg-gray-300" />
-            <div className="space-y-1.5">
-              {[95, 100, 88, 92, 84, 90].map((w) => (
-                <div key={w} className="h-1.5 rounded bg-gray-200" style={{ width: `${w}%` }} />
-              ))}
+        {/* Document area */}
+        <div className="flex-1 bg-[#ECECEC] p-2 overflow-hidden">
+          <div className="bg-white h-full rounded-sm border border-gray-300 px-4 py-3 flex flex-col gap-1 overflow-hidden">
+            {/* Section heading */}
+            <p className="text-[9px] font-bold text-gray-800 leading-tight">Area of Circles and Rectangles</p>
+            <p className="text-[7.5px] font-semibold text-gray-600 leading-tight">Understanding the Relationship Between π and Area</p>
+            <div className="my-1 border-t border-gray-200" />
+            {/* Body paragraphs */}
+            <p className="text-[7px] text-gray-700 leading-[1.45]">
+              The area of a rectangle is calculated by multiplying its length by its width: <span className="font-semibold">A = l × w</span>. For a square with side <span className="italic">s</span>, this simplifies to A = s². These formulas are straightforward because rectangles have straight edges that align neatly with a grid.
+            </p>
+            <p className="text-[7px] text-gray-700 leading-[1.45]">
+              Circles are different. Because the boundary is curved, we cannot simply count whole squares. Mathematicians discovered that the area always equals π multiplied by the square of the radius. The constant π (≈ 3.14159…) accounts for how much a circle "fills" compared to the square built on its radius.
+            </p>
+            {/* Formula box */}
+            <div className="my-1 border border-gray-300 rounded px-2 py-1 bg-gray-50 flex items-center gap-3">
+              <span className="text-[7.5px] font-bold text-gray-700">Key Formula:</span>
+              <span className="text-[8px] font-semibold text-gray-800 tracking-wide">A = π r²</span>
+              <span className="text-[6.5px] text-gray-500">where r is the radius of the circle</span>
             </div>
-            <div className="mt-2 grid grid-cols-3 gap-1.5">
-              {Array.from({ length: 9 }).map((_, i) => (
-                <div key={i} className="h-5 rounded bg-gray-100 border border-gray-200" />
-              ))}
-            </div>
-            <div className="mt-auto h-5 rounded bg-gray-100 border border-gray-200 px-2 flex items-center text-[8px] text-gray-400">
-              Question: What is 3/4 of 12? ______
+            <p className="text-[7px] text-gray-700 leading-[1.45]">
+              One way to see why this formula works is to slice the circle into thin sectors and rearrange them into a shape that resembles a rectangle. As the number of slices increases, the shape approaches a perfect rectangle with width πr and height r — giving area πr × r = πr².
+            </p>
+            <p className="text-[7px] text-gray-700 leading-[1.45]">
+              Example: A circle with radius 4 cm has area A = π × 4² = 16π ≈ 50.27 cm². A rectangle 8 cm × 6 cm has area 48 cm². Even though both shapes look similar in size, their areas differ because of the curved boundary.
+            </p>
+            {/* Practice question */}
+            <div className="mt-auto pt-1 border-t border-gray-200">
+              <p className="text-[7px] text-gray-700 leading-tight">
+                <span className="font-semibold">Practice:</span> Calculate the area of a circle with radius 5 cm. Show your working below.
+              </p>
+              <p className="text-[7px] text-gray-500 leading-tight mt-0.5">A = π × r² = π × ___² = ________ cm²</p>
+              <div className="mt-1 border-b border-gray-300 w-full" />
+              <div className="mt-1 border-b border-gray-300 w-4/5" />
             </div>
           </div>
         </div>

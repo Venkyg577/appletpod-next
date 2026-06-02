@@ -24,14 +24,14 @@ const tiempos = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AppletPod — Interactive Learning, Built Fast",
+  title: "AppletPod — Your Curriculum, Made Interactive",
   description:
-    "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
+    "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
   metadataBase: new URL("https://appletpod.com"),
   openGraph: {
-    title: "AppletPod — Interactive Learning, Built Fast",
+    title: "AppletPod — Your Curriculum, Made Interactive",
     description:
-      "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
+      "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
     url: "https://appletpod.com",
     siteName: "AppletPod",
     images: [
@@ -39,16 +39,16 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "AppletPod — Interactive Learning, Built Fast",
+        alt: "AppletPod — Your Curriculum, Made Interactive",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AppletPod — Interactive Learning, Built Fast",
+    title: "AppletPod — Your Curriculum, Made Interactive",
     description:
-      "Turn your curriculum into interactive applets. AI-powered, human-reviewed. Starting at $175/applet.",
+      "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
     images: ["/api/og"],
   },
 };
@@ -59,7 +59,7 @@ const organizationSchema = {
   name: "AppletPod",
   url: "https://appletpod.com",
   logo: "https://appletpod.com/logo.png",
-  description: "Turn your curriculum into interactive applets. AI-powered, human-reviewed.",
+  description: "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
   sameAs: [
     "https://twitter.com/appletpod",
     "https://linkedin.com/company/appletpod",

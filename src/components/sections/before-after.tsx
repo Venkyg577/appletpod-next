@@ -236,11 +236,6 @@ function AfterPlaceholder() {
   return (
     <div className="w-full aspect-[16/10] min-h-[230px] sm:min-h-[280px] bg-[#FFF3EB] rounded-lg overflow-hidden relative border border-[#E87B35]/30">
       <div className="absolute inset-0 flex flex-col p-3 gap-2">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-[#E87B35]" />
-          <div className="h-2 w-24 bg-[#E87B35]/40 rounded" />
-        </div>
-
         <div className="flex-1 flex flex-col items-center w-full min-h-0">
           <div className="w-full flex-1 flex flex-col items-center justify-center gap-2 min-h-0">
             <div className="w-full h-[150px] sm:h-[175px]">
@@ -349,7 +344,7 @@ function AfterPlaceholder() {
             </div>
 
             <motion.div
-              className="px-3 py-1.5 bg-emerald-500 rounded-full text-[10px] sm:text-[11px] text-white font-semibold shadow shrink-0"
+              className="px-3 py-1.5 bg-emerald-500 rounded-full text-[10px] sm:text-[11px] text-white font-semibold shadow shrink-0 -mt-1 sm:-mt-0 mb-1"
               animate={proofReveal >= 1 ? undefined : { scale: [0.95, 1, 0.95] }}
               transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -385,7 +380,7 @@ function AfterPlaceholder() {
 
 export function BeforeAfter() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section id="before-after" className="py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Section label */}
@@ -456,7 +451,7 @@ export function BeforeAfter() {
             </div>
             <AfterPlaceholder />
             <ul className="space-y-1.5">
-              {["Interactive & hands-on", "Built from your content, in 5 days", "Students actually engage"].map((t) => (
+              {["Interactive & hands-on", "Built from your content, in 5 days", "Learners finish because it's useful"].map((t) => (
                 <li key={t} className="flex items-start gap-2 text-xs sm:text-sm text-[#1A1A2E]/80">
                   <span className="mt-0.5 text-emerald-500 shrink-0">✓</span>
                   {t}

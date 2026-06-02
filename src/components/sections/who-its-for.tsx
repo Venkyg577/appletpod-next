@@ -1,38 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Zap, Heart, Building2, TrendingUp, User } from "lucide-react";
+import { GraduationCap, Zap, Building2 } from "lucide-react";
 
 const audiences = [
   {
     icon: GraduationCap,
-    title: "Universities & Colleges",
-    desc: "STEM, nursing, science programs that need to digitize curriculum. Your faculty knows the subject. We build the applets they can't.",
+    title: "University and college faculty",
+    desc: "You spent the semester building slides. Attendance is fine. Attention isn't. We turn your lectures into modules learners manipulate, make decisions in, and get instant feedback from, so the concept sticks before the exam, not the night before it.",
   },
   {
     icon: Zap,
-    title: "EdTech Startups",
-    desc: "Content is your product. You need production-quality interactive applets, not slide decks. Fast iterations as your curriculum evolves.",
-  },
-  {
-    icon: Heart,
-    title: "Healthcare Training",
-    desc: "Clinical simulations, compliance scenarios, procedure walkthroughs. Where training isn't optional and quality can't be compromised.",
+    title: "EdTech startups",
+    desc: "Your content team writes it. Learners click next and forget it. We build the interactive version they actually work through, and we ship it as fast as your curriculum changes.",
   },
   {
     icon: Building2,
-    title: "Corporate L&D Teams",
-    desc: "Your employees need engaging training. We build what your LMS should have had from the start.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Career & Upskilling",
-    desc: "Interactive content that helps learners practice, not just watch. The kind that improves completion rates and outcomes.",
-  },
-  {
-    icon: User,
-    title: "Training Providers",
-    desc: "You deliver the expertise, we make it interactive. Scale your training catalog without scaling your tech team.",
+    title: "Corporate and L&D teams",
+    desc: "You spent lakhs on Storyline and people still skip the training. We rebuild it as scenarios your team finishes because they're useful, not because they're mandatory.",
   },
 ];
 
@@ -50,7 +35,7 @@ export function WhoItsFor() {
             Who It&apos;s For
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-charcoal leading-tight">
-            You have the expertise. We have the tech.
+            Three teams we build for
           </h2>
         </motion.div>
 
@@ -80,9 +65,7 @@ export function WhoItsFor() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          If your team has the domain knowledge and the budget, but not the tech
-          team to build interactive content — that&apos;s exactly what AppletPod
-          exists for.
+          If you need slides, talking-head videos, or a quiz bolted onto a PDF, a cheaper tool will do it. AppletPod is for teams whose learners need to practice, decide, and get feedback. If you have the subject knowledge and the budget but not the team to build that, that is exactly what we do.
         </motion.p>
       </div>
     </section>

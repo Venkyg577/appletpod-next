@@ -75,5 +75,21 @@
     "status": "published",
     "demoUrl": "/comparing-fractions/",
     "thumbnail": null
+  },
+  {
+    "slug": "chocolate-fractions",
+    "title": "Boojho's Chocolate Sharing – Equivalent Fractions",
+    "description": "A 34-screen guided activity where learners shade and split chocolate-bar shapes to visually discover that 1/2 = 2/4 and 1/3 = 2/6",
+    "category": "Mathematics",
+    "grade": "Class 5",
+    "tags": [
+      "fractions",
+      "equivalent-fractions",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/chocolate-fractions/",
+    "thumbnail": null
   }
 ]

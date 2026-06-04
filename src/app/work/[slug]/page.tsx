@@ -1,15 +1,30 @@
+import { readFileSync } from "fs";
+import { join } from "path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MoveRight, Maximize2 } from "lucide-react";
-import registry from "../../../../content/applets/registry.json";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
-type Applet = (typeof registry)[number];
+type Applet = {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  grade: string;
+  status: string;
+  demoUrl: string;
+};
+
+function readRegistry(): Applet[] {
+  return JSON.parse(
+    readFileSync(join(process.cwd(), "content/applets/registry.json"), "utf-8")
+  );
+}
 
 export function generateStaticParams() {
-  return registry
+  return readRegistry()
     .filter((a) => a.status === "published")
     .map((a) => ({ slug: a.slug }));
 }
@@ -20,7 +35,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const applet = registry.find((a) => a.slug === slug);
+  const applet = readRegistry().find((a) => a.slug === slug);
   if (!applet) return {};
   return {
     title: `${applet.title} — AppletPod`,
@@ -45,7 +60,8 @@ export default async function AppletPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const applet: Applet | undefined = registry.find((a) => a.slug === slug);
+  const registry = readRegistry();
+  const applet = registry.find((a) => a.slug === slug);
 
   if (!applet || applet.status !== "published") notFound();
 

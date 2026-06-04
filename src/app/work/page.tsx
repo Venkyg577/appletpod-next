@@ -35,8 +35,9 @@ export const metadata = {
 
 export default function WorkPage() {
   const registry = JSON.parse(
-    readFileSync(join(process.cwd(), "content/applets/registry.json"), "utf-8")
+    readFileSync(join(process.cwd(), "public/content/applets/registry.json"), "utf-8")
   );
+  console.log('[WorkPage] Registry entries:', registry.length, registry.map((a: { slug: string }) => a.slug));
   const published = registry.filter(
     (a: { status: string }) => a.status === "published"
   );

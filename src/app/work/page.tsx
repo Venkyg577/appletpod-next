@@ -2,6 +2,8 @@ import { MoveRight } from "lucide-react";
 import registry from "../../../content/applets/registry.json";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 
+export const revalidate = 0;
+
 const categoryColors: Record<string, { bg: string; text: string }> = {
   Mathematics: { bg: "bg-blue-50", text: "text-blue-700" },
   Physics: { bg: "bg-purple-50", text: "text-purple-700" },

@@ -4,6 +4,8 @@ import { MoveRight, Maximize2 } from "lucide-react";
 import registry from "../../../../content/applets/registry.json";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 
+export const revalidate = 0;
+
 type Applet = (typeof registry)[number];
 
 export function generateStaticParams() {

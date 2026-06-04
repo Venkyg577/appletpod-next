@@ -19,7 +19,7 @@ type Applet = {
 
 function readRegistry(): Applet[] {
   return JSON.parse(
-    readFileSync(join(process.cwd(), "content/applets/registry.json"), "utf-8")
+    readFileSync(join(process.cwd(), "public/content/applets/registry.json"), "utf-8")
   );
 }
 

@@ -6,9 +6,9 @@ import { trackEvent } from "@/lib/analytics";
 
 const demos = [
   {
-    slug: "comparing-fractions",
-    label: "Fractions",
-    sub: "Pick an answer, get instant feedback.",
+    slug: "cbse-digital-book",
+    label: "Fractions workbook",
+    sub: "Flip pages, answer embedded checks, get instant feedback.",
   },
   {
     slug: "cbse-surface-area",
@@ -16,9 +16,9 @@ const demos = [
     sub: "Manipulate it and watch the net unfold.",
   },
   {
-    slug: "biology-lab",
-    label: "Lab safety",
-    sub: "Spot the risks, get told what you missed.",
+    slug: "equivalent-fractions",
+    label: "Equivalent fractions",
+    sub: "Build clay blocks to see why ½ = 2⁄4 = 4⁄8.",
   },
 ];
 

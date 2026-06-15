@@ -6,17 +6,22 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-const navLinks = [
-  { href: "#pricing", label: "Pricing" },
-  { href: "/work", label: "Work" },
-  { href: "/blog", label: "Blog" },
-];
-
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const onApplets = pathname?.startsWith("/applets") ?? false;
+
+  // The product link points at the *other* page: show "Flipbooks" on the
+  // Applets page, and "Applets" everywhere else (Flipbooks is the home page).
+  const navLinks = [
+    onApplets
+      ? { href: "/", label: "Flipbooks" }
+      : { href: "/applets", label: "Applets" },
+    { href: "/work", label: "Work" },
+    { href: "/blog", label: "Blog" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);

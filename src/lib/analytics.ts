@@ -2,6 +2,8 @@
 
 export type AnalyticsEventName =
   | "cta_click"
+  | "demo_click"
+  | "video_sound_toggle"
   | "applet_start"
   | "applet_complete"
   | "applet_retry"

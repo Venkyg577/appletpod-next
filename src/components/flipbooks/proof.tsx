@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Maximize2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const demos = [
@@ -59,13 +59,28 @@ export function FlipbooksProof() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] bg-warm">
+              <div className="group/card relative rounded-2xl border border-warm-dark overflow-hidden shadow-[0_4px_24px_rgba(26,26,46,0.06)] bg-warm">
                 <iframe
                   src={`https://demos.appletpod.com/${demo.slug}/`}
                   title={`Live applet: ${demo.label}`}
                   loading="lazy"
                   className="w-full h-[320px] block bg-white"
                 />
+                <a
+                  href={`https://demos.appletpod.com/${demo.slug}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("demo_click", {
+                      source: "flipbooks_proof",
+                      slug: demo.slug,
+                    })
+                  }
+                  aria-label={`Open ${demo.label} fullscreen`}
+                  className="absolute top-3 right-3 z-10 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-white/60 text-charcoal/50 hover:text-charcoal hover:bg-white shadow-sm transition-all duration-200 opacity-0 group-hover/card:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <Maximize2 className="w-4 h-4" />
+                </a>
               </div>
               <p className="mt-4 font-heading font-semibold text-charcoal">
                 {demo.label}

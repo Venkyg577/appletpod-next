@@ -23,9 +23,13 @@ function readRegistry(): Applet[] {
   );
 }
 
+function isVisibleApplet(status: string) {
+  return status === "published" || status === "live";
+}
+
 export function generateStaticParams() {
   return readRegistry()
-    .filter((a) => a.status === "published")
+    .filter((a) => isVisibleApplet(a.status))
     .map((a) => ({ slug: a.slug }));
 }
 
@@ -63,10 +67,10 @@ export default async function AppletPage({
   const registry = readRegistry();
   const applet = registry.find((a) => a.slug === slug);
 
-  if (!applet || applet.status !== "published") notFound();
+  if (!applet || !isVisibleApplet(applet.status)) notFound();
 
   const related = registry.filter(
-    (a) => a.slug !== slug && a.status === "published"
+    (a) => a.slug !== slug && isVisibleApplet(a.status)
   );
   const cat = getCategoryStyle(applet.category);
 

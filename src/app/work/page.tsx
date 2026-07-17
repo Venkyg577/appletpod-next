@@ -16,6 +16,10 @@ function getCategoryStyle(category: string) {
   return categoryColors[category] ?? { bg: "bg-warm", text: "text-charcoal/60" };
 }
 
+function isVisibleApplet(status: string) {
+  return status === "published" || status === "live";
+}
+
 export const metadata = {
   title: "Our Work — AppletPod",
   description:
@@ -38,8 +42,8 @@ export default function WorkPage() {
     readFileSync(join(process.cwd(), "public/content/applets/registry.json"), "utf-8")
   );
   console.log('[WorkPage] Registry entries:', registry.length, registry.map((a: { slug: string }) => a.slug));
-  const published = registry.filter(
-    (a: { status: string }) => a.status === "published"
+  const published = registry.filter((a: { status: string }) =>
+    isVisibleApplet(a.status)
   );
 
   return (

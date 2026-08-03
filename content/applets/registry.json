@@ -14,7 +14,7 @@
     ],
     "status": "published",
     "demoUrl": "/light-grade5/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/light-grade5.png"
   },
   {
     "slug": "comparing-decimals",
@@ -29,7 +29,7 @@
     ],
     "status": "published",
     "demoUrl": "/comparing-decimals/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/comparing-decimals.png"
   },
   {
     "slug": "parallel-series-circuits",
@@ -44,7 +44,7 @@
     ],
     "status": "published",
     "demoUrl": "/parallel-series-circuits/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/parallel-series-circuits.png"
   },
   {
     "slug": "biology-lab",
@@ -60,7 +60,7 @@
     ],
     "status": "published",
     "demoUrl": "/biology-lab/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/biology-lab.png"
   },
   {
     "slug": "equivalent-fractions",
@@ -76,7 +76,7 @@
     ],
     "status": "published",
     "demoUrl": "/equivalent-fractions/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/equivalent-fractions.png"
   },
   {
     "slug": "comparing-fractions",
@@ -91,7 +91,7 @@
     ],
     "status": "published",
     "demoUrl": "/comparing-fractions/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/comparing-fractions.png"
   },
   {
     "slug": "cbse-digital-book",
@@ -108,7 +108,7 @@
     ],
     "status": "unlisted",
     "demoUrl": "/cbse-digital-book/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/cbse-digital-book.png"
   },
   {
     "slug": "cbse-surface-area",
@@ -126,7 +126,7 @@
     ],
     "status": "unlisted",
     "demoUrl": "/cbse-surface-area/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/cbse-surface-area.png"
   },
   {
     "slug": "chocolate-fractions",
@@ -142,7 +142,7 @@
     ],
     "status": "live",
     "demoUrl": "/chocolate-fractions/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/chocolate-fractions.png"
   },
   {
     "slug": "modifiers",
@@ -196,6 +196,6 @@
     ],
     "status": "unlisted",
     "demoUrl": "/modifiers-digital-book/",
-    "thumbnail": null
+    "thumbnail": "/thumbs/modifiers-digital-book.png"
   }
 ]

@@ -197,5 +197,93 @@
     "status": "unlisted",
     "demoUrl": "/modifiers-digital-book/",
     "thumbnail": "/thumbs/modifiers-digital-book.png"
+  },
+  {
+    "slug": "coordinates-floor-plan",
+    "title": "Orienting Yourself – Locating Points on a Floor Plan",
+    "description": "Students drag pins onto a floor plan of a room, then watch the marked positions resolve into a labelled grid — building the intuition that a grid lets us describe any location with numbers.",
+    "category": "Mathematics",
+    "grade": "Class 9",
+    "tags": [
+      "coordinates",
+      "coordinate-geometry",
+      "grid",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/coordinates-floor-plan/",
+    "thumbnail": "/thumbs/coordinates-floor-plan.png"
+  },
+  {
+    "slug": "coordinates-plane",
+    "title": "The 2-D Cartesian Coordinate System",
+    "description": "An interactive tour of the coordinate plane: the x- and y-axes, their positive and negative directions, the origin, and how an ordered pair (x, y) pins down any point.",
+    "category": "Mathematics",
+    "grade": "Class 9",
+    "tags": [
+      "coordinates",
+      "cartesian-plane",
+      "axes",
+      "origin",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/coordinates-plane/",
+    "thumbnail": "/thumbs/coordinates-plane.png"
+  },
+  {
+    "slug": "coordinates-distances",
+    "title": "Finding Distances with Coordinates",
+    "description": "Students read coordinates off a scaled room plan to work out door widths by subtracting x- and y-values, then compare the result against real-world wheelchair accessibility.",
+    "category": "Mathematics",
+    "grade": "Class 9",
+    "tags": [
+      "coordinates",
+      "distance",
+      "measurement",
+      "accessibility",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/coordinates-distances/",
+    "thumbnail": "/thumbs/coordinates-distances.png"
+  },
+  {
+    "slug": "coordinates-quadrants",
+    "title": "Quadrants of the Cartesian Plane",
+    "description": "Build the plane axis by axis, discover the four quadrants and their anti-clockwise numbering, then plot points by dragging — learning the sign pattern of each quadrant by doing.",
+    "category": "Mathematics",
+    "grade": "Class 9",
+    "tags": [
+      "coordinates",
+      "quadrants",
+      "plotting",
+      "signs",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/coordinates-quadrants/",
+    "thumbnail": "/thumbs/coordinates-quadrants.png"
+  },
+  {
+    "slug": "coordinates-distance-formula",
+    "title": "The Distance Formula – Pythagoras in Coordinates",
+    "description": "Starting from horizontal and vertical distances, students build a right triangle on a slanted segment and derive the distance formula as Pythagoras' theorem written in coordinates.",
+    "category": "Mathematics",
+    "grade": "Class 9",
+    "tags": [
+      "coordinates",
+      "distance-formula",
+      "pythagoras",
+      "cbse",
+      "math"
+    ],
+    "status": "live",
+    "demoUrl": "/coordinates-distance-formula/",
+    "thumbnail": "/thumbs/coordinates-distance-formula.png"
   }
 ]

@@ -43,7 +43,7 @@ export function AppletCard({ applet }: { applet: WorkApplet }) {
 
   return (
     <div
-      className="group flex flex-col rounded-2xl border border-warm-dark bg-white overflow-hidden hover:shadow-[0_4px_24px_rgba(26,26,46,0.08)] hover:border-warm-dark/80 transition-all duration-200"
+      className="group relative flex flex-col rounded-2xl border border-warm-dark bg-white overflow-hidden hover:shadow-[0_4px_24px_rgba(26,26,46,0.08)] hover:border-warm-dark/80 transition-all duration-200 focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
@@ -99,7 +99,11 @@ export function AppletCard({ applet }: { applet: WorkApplet }) {
         </p>
       </div>
 
-      {/* Footer link */}
+      {/* Footer link. The anchor is stretched over the whole card via
+          ::after, so clicking the thumbnail or body navigates too — while
+          staying a single <a>, so analytics fire once and the card is one
+          tab stop rather than several. The hover-preview iframe above is
+          already pointer-events-none, so it doesn't swallow the click. */}
       <div className="px-6 pb-5">
         <TrackedLink
           href={`/work/${applet.slug}`}
@@ -108,7 +112,7 @@ export function AppletCard({ applet }: { applet: WorkApplet }) {
             applet_slug: applet.slug,
             source: "work_grid",
           }}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200 after:absolute after:inset-0 after:content-[''] focus:outline-none"
         >
           View applet
           <MoveRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />

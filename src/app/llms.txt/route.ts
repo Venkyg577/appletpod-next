@@ -12,14 +12,18 @@ export async function GET() {
 
   const content = `# AppletPod
 
-> Interactive learning content, built fast. We design and ship interactive applets for K-12 math, science, and language learning using AI-assisted development.
+> A build studio. AI agents and small tools for founder-led firms, plus interactive learning content (Flipbooks and Applets).
 
 ## About
 
-AppletPod helps EdTech companies, publishers, and training providers ship interactive learning products in 3-4 weeks instead of 3-4 months. Founded by Venky Golisetti, who has shipped 100+ interactive educational applets across multiple subjects and languages.
+AppletPod (VAMIX Technologies Pvt Ltd, Bengaluru) is run by Venkatesh G (Venky), who ran a content studio of about two hundred people at BYJU'S from 2013 to 2023. Since 2023 he builds with AI: agents in production for clients in real estate, logistics and education, and 100+ interactive educational applets. AppletPod partners with thelaunch.space.
 
 ## What We Do
 
+- AI agents for founder-led firms (a working first version in about two weeks)
+- Small internal tools and written AI briefs
+- Flipbooks: existing textbooks with an interactive layer (https://appletpod.com/flipbooks)
+- Applets: custom interactive learning modules (https://appletpod.com/applets)
 - Interactive educational applets (K-8 math, science, language)
 - AI-powered training and education tools
 - Course content and product videos

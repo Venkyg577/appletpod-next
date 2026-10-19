@@ -1,27 +1,25 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
-import { FlipbooksHero } from "@/components/flipbooks/hero";
-import { FlipbooksProblem } from "@/components/flipbooks/problem";
-import { TheShift } from "@/components/flipbooks/the-shift";
-import { FlipbooksHowItWorks } from "@/components/flipbooks/how-it-works";
-import { FlipbooksProof } from "@/components/flipbooks/proof";
-import { FlipbooksWhoItsFor } from "@/components/flipbooks/who-its-for";
-import { FlipbooksWhatYouGet } from "@/components/flipbooks/what-you-get";
-import { FlipbooksFaq } from "@/components/flipbooks/faq";
-import { FlipbooksFinalCta } from "@/components/flipbooks/final-cta";
+import { StudioHero } from "@/components/studio/hero";
+import { YourWeek } from "@/components/studio/your-week";
+import { ThreeSizes } from "@/components/studio/three-sizes";
+import { BuildList } from "@/components/studio/build-list";
+import { Learning } from "@/components/studio/learning";
+import { StudioAbout } from "@/components/studio/about";
+import { StudioFinalCta } from "@/components/studio/final-cta";
 
 export const metadata: Metadata = {
-  title: "Flipbooks by AppletPod — turn any book into interactive learning",
+  title: "AppletPod: AI agents and builds for founder-led firms",
   description:
-    "Reading creates the illusion of learning. Flipbooks take the book you already have and add an interactive layer — so the same page talks back, checks understanding, and makes students practice. Your first live page back in 24 hours.",
+    "Your team does the same work by hand every morning. I build the agent that does it, with a person checking the parts that matter. Plus interactive learning content: Flipbooks and Applets.",
   alternates: {
     canonical: "https://appletpod.com",
   },
   openGraph: {
-    title: "Flipbooks by AppletPod — turn any book into interactive learning",
+    title: "AppletPod: AI agents and builds for founder-led firms",
     description:
-      "Your existing book, with an interactive layer — so students actually learn it instead of just reading it.",
+      "Your team does the same work by hand every morning. I build the agent that does it.",
     url: "https://appletpod.com",
     siteName: "AppletPod",
     type: "website",
@@ -33,15 +31,13 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <FlipbooksHero />
-        <FlipbooksProblem />
-        <TheShift />
-        <FlipbooksHowItWorks />
-        <FlipbooksProof />
-        <FlipbooksWhoItsFor />
-        <FlipbooksWhatYouGet />
-        <FlipbooksFaq />
-        <FlipbooksFinalCta />
+        <StudioHero />
+        <YourWeek />
+        <ThreeSizes />
+        <BuildList />
+        <Learning />
+        <StudioAbout />
+        <StudioFinalCta />
       </main>
       <Footer />
     </>

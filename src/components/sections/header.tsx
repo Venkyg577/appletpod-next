@@ -11,14 +11,9 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const onApplets = pathname?.startsWith("/applets") ?? false;
-
-  // The product link points at the *other* page: show "Flipbooks" on the
-  // Applets page, and "Applets" everywhere else (Flipbooks is the home page).
   const navLinks = [
-    onApplets
-      ? { href: "/", label: "Flipbooks" }
-      : { href: "/applets", label: "Applets" },
+    { href: "/flipbooks", label: "Flipbooks" },
+    { href: "/applets", label: "Applets" },
     { href: "/work", label: "Work" },
     { href: "/blog", label: "Blog" },
   ];

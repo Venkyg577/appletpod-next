@@ -125,7 +125,7 @@ export function FlipbooksHero() {
 
           <p className="mt-7 text-sm text-charcoal/40 font-medium tracking-wide">
             100+ interactive modules shipped &middot; Built by a 10-year
-            BYJU&apos;S veteran who ran a 300-person studio.
+            BYJU&apos;S veteran who ran a 200-person studio.
           </p>
         </div>
       </div>

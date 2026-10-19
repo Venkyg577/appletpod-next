@@ -37,17 +37,6 @@ export const buildGroups: BuildGroup[] = [
         status: "LIVE",
       },
       {
-        title: "Reply drafter",
-        description:
-          "Turns every reply to cold outreach into one ready-to-send answer. A person reviews and sends. Never auto-sends.",
-        status: "OWN",
-      },
-      {
-        title: "Personal assistant",
-        description: "Runs on Telegram, IST, on open-source Hermes.",
-        status: "OWN",
-      },
-      {
         title: "Content agents",
         description:
           "Five agents that research and draft LinkedIn posts into one dashboard. Ran in production, then retired.",
@@ -75,22 +64,6 @@ export const buildGroups: BuildGroup[] = [
         description:
           "Multi-agent support desk on LangGraph. Designed and specced end to end.",
         status: "PROTOTYPE",
-      },
-    ],
-  },
-  {
-    label: "Websites",
-    builds: [
-      {
-        title: "Loan facilitator site",
-        description:
-          "Bilingual English and Telugu lead site for a multi-bank loan business.",
-        status: "CLIENT",
-      },
-      {
-        title: "appletpod.com",
-        description: "This site.",
-        status: "OWN",
       },
     ],
   },

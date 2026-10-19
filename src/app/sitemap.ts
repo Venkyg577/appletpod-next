@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    ...["flipbooks", "applets", "work"].map((path) => ({
+      url: `https://appletpod.com/${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     {
       url: "https://appletpod.com/blog",
       lastModified: new Date(),

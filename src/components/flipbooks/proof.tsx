@@ -27,7 +27,7 @@ const numbers = [
   {
     stat: "10 yrs",
     label:
-      "at BYJU'S — ran studio operations for 300+ people and built the interactive content engine behind one of the world's largest EdTech platforms",
+      "at BYJU'S — ran studio operations for about two hundred people and built the interactive content engine behind one of the world's largest EdTech platforms",
   },
   { stat: "24 hrs", label: "from a static page to a live interactive one" },
 ];

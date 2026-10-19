@@ -24,14 +24,14 @@ const tiempos = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AppletPod — Your Curriculum, Made Interactive",
+  title: "AppletPod: AI agents and interactive learning",
   description:
-    "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
+    "AppletPod is a build studio. AI agents and small tools for founder-led firms, and interactive learning content (Flipbooks and Applets) for publishers and EdTech teams.",
   metadataBase: new URL("https://appletpod.com"),
   openGraph: {
-    title: "AppletPod — Your Curriculum, Made Interactive",
+    title: "AppletPod: AI agents and interactive learning",
     description:
-      "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
+      "AppletPod is a build studio. AI agents and small tools for founder-led firms, and interactive learning content (Flipbooks and Applets) for publishers and EdTech teams.",
     url: "https://appletpod.com",
     siteName: "AppletPod",
     images: [
@@ -39,16 +39,16 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "AppletPod — Your Curriculum, Made Interactive",
+        alt: "AppletPod: AI agents and interactive learning",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AppletPod — Your Curriculum, Made Interactive",
+    title: "AppletPod: AI agents and interactive learning",
     description:
-      "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
+      "AppletPod is a build studio. AI agents and small tools for founder-led firms, and interactive learning content (Flipbooks and Applets) for publishers and EdTech teams.",
     images: ["/api/og"],
   },
 };
@@ -59,7 +59,7 @@ const organizationSchema = {
   name: "AppletPod",
   url: "https://appletpod.com",
   logo: "https://appletpod.com/logo.png",
-  description: "Your slides aren't landing. AppletPod turns the curriculum you already have into interactive modules learners actually work through. Reviewed by a 10-year EdTech veteran.",
+  description: "AppletPod is a build studio. AI agents and small tools for founder-led firms, and interactive learning content (Flipbooks and Applets) for publishers and EdTech teams.",
   sameAs: [
     "https://twitter.com/appletpod",
     "https://linkedin.com/company/appletpod",

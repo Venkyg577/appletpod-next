@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Check, Linkedin } from "lucide-react";
 import Image from "next/image";
 
-const credentials = ["10+ Years EdTech", "300+ Team Led", "100+ Applets Shipped"];
+const credentials = ["10+ Years EdTech", "200-Person Studio Led", "100+ Applets Shipped"];
 
 export function About() {
   return (
@@ -54,7 +54,7 @@ export function About() {
             <div className="space-y-4 text-charcoal/65 text-[1.0625rem] leading-[1.75]">
               <p>
                 I&apos;m <strong className="text-charcoal font-semibold">Venkatesh G</strong>. I
-                led studio operations for 300+ people at BYJU&apos;S and helped build
+                led studio operations for about two hundred people at BYJU&apos;S and helped build
                 the interactive content engine behind one of the world&apos;s largest
                 EdTech platforms.
               </p>

@@ -228,7 +228,7 @@ export function Proof() {
           </div>
           <div className="p-6 border-y sm:border-y-0 sm:border-x border-warm-dark">
             <AnimatedCounter target={10} suffix=" yrs" />
-            <p className="mt-3 text-sm text-charcoal/50 font-medium">At BYJU&apos;S — led studio ops for 300+ people</p>
+            <p className="mt-3 text-sm text-charcoal/50 font-medium">At BYJU&apos;S, led studio ops for about 200 people</p>
           </div>
           <div className="p-6">
             <AnimatedCounter target={716} suffix=" hrs" />

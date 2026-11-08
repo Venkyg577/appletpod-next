@@ -12,14 +12,14 @@ import { FlipbooksFaq } from "@/components/flipbooks/faq";
 import { FlipbooksFinalCta } from "@/components/flipbooks/final-cta";
 
 export const metadata: Metadata = {
-  title: "Flipbooks by AppletPod — turn any book into interactive learning",
+  title: "Flipbooks: turn any book into interactive learning | AppletPod",
   description:
     "Reading creates the illusion of learning. Flipbooks take the book you already have and add an interactive layer — so the same page talks back, checks understanding, and makes students practice. Your first live page back in 24 hours.",
   alternates: {
     canonical: "https://appletpod.com/flipbooks",
   },
   openGraph: {
-    title: "Flipbooks by AppletPod — turn any book into interactive learning",
+    title: "Flipbooks: turn any book into interactive learning | AppletPod",
     description:
       "Your existing book, with an interactive layer — so students actually learn it instead of just reading it.",
     url: "https://appletpod.com/flipbooks",

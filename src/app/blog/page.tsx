@@ -6,11 +6,11 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
 export const metadata: Metadata = {
-  title: "Blog — AppletPod",
+  title: "Blog | AppletPod",
   description:
     "Practitioner insights on interactive learning design, AI in education, and building EdTech products. From the team that ships 100+ applets.",
   openGraph: {
-    title: "Blog — AppletPod",
+    title: "Blog | AppletPod",
     description:
       "Practitioner insights on interactive learning design, AI in education, and building EdTech products.",
     url: "https://appletpod.com/blog",

@@ -10,11 +10,11 @@ function isVisibleApplet(status: string) {
 }
 
 export const metadata = {
-  title: "Our Work — AppletPod",
+  title: "Our Work | AppletPod",
   description:
     "Interactive learning applets built by AppletPod. Explore our portfolio of hands-on, curriculum-aligned educational tools.",
   openGraph: {
-    title: "Our Work — AppletPod",
+    title: "Our Work | AppletPod",
     description:
       "Interactive learning applets built by AppletPod. Explore our portfolio.",
     url: "https://appletpod.com/work",

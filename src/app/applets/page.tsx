@@ -14,14 +14,14 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 
 export const metadata: Metadata = {
-  title: "Applets — Custom Interactive Modules | AppletPod",
+  title: "Applets: Custom Interactive Modules | AppletPod",
   description:
     "Applets are the interactive layer — fully custom modules built from the curriculum you already have. Reviewed by a 10-year EdTech veteran, in your hands in days. You own the code.",
   alternates: {
     canonical: "https://appletpod.com/applets",
   },
   openGraph: {
-    title: "Applets — Custom Interactive Modules | AppletPod",
+    title: "Applets: Custom Interactive Modules | AppletPod",
     description:
       "Applets are the interactive layer — fully custom modules built from the curriculum you already have. You own the code.",
     url: "https://appletpod.com/applets",

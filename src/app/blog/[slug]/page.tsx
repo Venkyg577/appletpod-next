@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Not Found" };
 
   return {
-    title: `${post.title} — AppletPod Blog`,
+    title: `${post.title} | AppletPod Blog`,
     description: post.description,
     keywords: post.keywords,
     authors: [{ name: post.author }],

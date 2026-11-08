@@ -2,7 +2,7 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
 export const metadata = {
-  title: "Privacy Policy — AppletPod",
+  title: "Privacy Policy | AppletPod",
   description: "How Vamix Technologies Private Limited collects, uses, and protects your data.",
 };
 

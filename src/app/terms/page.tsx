@@ -2,7 +2,7 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
 export const metadata = {
-  title: "Terms of Service — AppletPod",
+  title: "Terms of Service | AppletPod",
   description: "Terms governing use of AppletPod services by Vamix Technologies Private Limited.",
 };
 

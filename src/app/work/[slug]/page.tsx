@@ -42,7 +42,7 @@ export async function generateMetadata({
   const applet = readRegistry().find((a) => a.slug === slug);
   if (!applet) return {};
   return {
-    title: `${applet.title} — AppletPod`,
+    title: `${applet.title} | AppletPod`,
     description: applet.description,
   };
 }

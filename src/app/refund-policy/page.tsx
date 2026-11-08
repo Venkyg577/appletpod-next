@@ -2,7 +2,7 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
 export const metadata = {
-  title: "Refund Policy — AppletPod",
+  title: "Refund Policy | AppletPod",
   description: "Refund policy for custom interactive learning applets built by AppletPod.",
 };
 

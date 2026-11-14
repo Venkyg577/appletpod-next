@@ -90,7 +90,7 @@ export default function RootLayout({
   gtag('js', new Date());
   gtag('config', 'G-JCFPPPL4S4', { debug_mode: true });
 `}</Script>
-        <Script
+        <script
           id="org-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

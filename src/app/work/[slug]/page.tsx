@@ -41,9 +41,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const applet = readRegistry().find((a) => a.slug === slug);
   if (!applet) return {};
+  const url = `https://appletpod.com/work/${applet.slug}`;
   return {
     title: `${applet.title} | AppletPod`,
     description: applet.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${applet.title} | AppletPod`,
+      description: applet.description,
+      url,
+      siteName: "AppletPod",
+      images: [{ url: "/api/og", width: 1200, height: 630 }],
+      type: "website",
+    },
   };
 }
 

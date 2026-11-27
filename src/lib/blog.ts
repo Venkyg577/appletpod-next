@@ -46,6 +46,7 @@ function getClusterLabel(cluster: string): string {
     "3-building-products": "Building EdTech Products",
     "3-science-skills": "Science Skills & Safety",
     "interactive-content": "Interactive Content Design",
+    "4-agents-for-founders": "AI Agents for Founders",
   };
   return map[cluster] || cluster;
 }

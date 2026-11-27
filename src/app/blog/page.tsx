@@ -5,6 +5,10 @@ import { BookCallCTA } from "@/components/blog/book-call-cta";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
+// Rendered per request, not prerendered: Netlify's durable cache kept serving
+// a weeks-old copy after deploys (LOG 2026-11-08), which hid new posts.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog | AppletPod",
   description:

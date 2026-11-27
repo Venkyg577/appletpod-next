@@ -3,6 +3,10 @@ import { join } from "path";
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 
+// Rendered per request, not prerendered: Netlify's durable cache kept serving
+// a weeks-old copy after deploys (LOG 2026-11-08), which hid new posts.
+export const dynamic = "force-dynamic";
+
 type Applet = { slug: string; status: string };
 
 // Same source and filter as src/app/work/[slug]/page.tsx, so the sitemap

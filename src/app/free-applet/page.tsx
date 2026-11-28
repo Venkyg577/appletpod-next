@@ -13,7 +13,7 @@ const CONTENT_FORMAT_OPTIONS = [
   "Documents or PDFs",
   "Rough notes or recordings",
   "Video content",
-  "Just an idea — no content yet",
+  "Just an idea, no content yet",
   "Something else",
 ];
 
@@ -311,7 +311,7 @@ export default function FreeAppletPage() {
               Free First Applet
             </p>
             <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-charcoal leading-tight mb-4">
-              Let&apos;s build your first applet — free.
+              Let&apos;s build your first applet, free.
             </h1>
             <p className="text-lg text-charcoal/60 leading-relaxed">
               Tell us a bit about yourself and what you want to build. We&apos;ll take it from there.
@@ -432,7 +432,7 @@ export default function FreeAppletPage() {
                 </Field>
                 <Field
                   label="Anything else we should know?"
-                  hint="Optional — your audience, goals, constraints, etc."
+                  hint="Optional: your audience, goals, constraints, etc."
                 >
                   <textarea
                     rows={4}
@@ -494,7 +494,7 @@ export default function FreeAppletPage() {
                   aria-label="Upload files"
                 />
                 <p className="text-xs text-charcoal/40">
-                  Slides, PDFs, notes, recordings — anything that helps us understand your content.
+                  Slides, PDFs, notes, recordings: anything that helps us understand your content.
                 </p>
               </div>
             </FormSection>

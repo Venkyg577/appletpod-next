@@ -10,13 +10,13 @@ function isVisibleApplet(status: string) {
 }
 
 export const metadata = {
-  title: "Our Work | AppletPod",
+  title: "Interactive Learning Applet Examples | AppletPod",
   description:
-    "Interactive learning applets built by AppletPod. Explore our portfolio of hands-on, curriculum-aligned educational tools.",
+    "Live interactive learning applets for math, science and English, built by AppletPod. Open any one and try it in your browser.",
   openGraph: {
-    title: "Our Work | AppletPod",
+    title: "Interactive Learning Applet Examples | AppletPod",
     description:
-      "Interactive learning applets built by AppletPod. Explore our portfolio.",
+      "Live interactive learning applets for math, science and English. Try any one in your browser.",
     url: "https://appletpod.com/work",
     siteName: "AppletPod",
     type: "website",
@@ -64,7 +64,7 @@ export default function WorkPage() {
             Want an applet built for your content?
           </p>
           <p className="text-charcoal/60 mb-6">
-            We&apos;ll design, storyboard, and build it — ready to embed anywhere.
+            We&apos;ll design, storyboard, and build it, ready to embed anywhere.
           </p>
           <TrackedLink
             href="/free-applet"

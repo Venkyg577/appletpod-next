@@ -20,13 +20,13 @@ ${post.content}
 `;
   });
 
-  const content = `# AppletPod — Full Content
+  const content = `# AppletPod: Full Content
 
 > This file contains the complete text of all published blog posts from AppletPod, intended for AI/LLM consumption.
 
 ## About AppletPod
 
-AppletPod helps EdTech companies, publishers, and training providers ship interactive learning products in 3-4 weeks. Founded by Venky Golisetti — 100+ interactive applets shipped, 2+ years building with AI. We specialize in interactive content that actually improves learning outcomes, not decorated PDFs.
+AppletPod (VAMIX Technologies Pvt Ltd, Bengaluru) is a build studio run by Venkatesh G (Venky), who ran a content studio of about two hundred people at BYJU'S from 2013 to 2023. Two lines of work: AI agents and small tools for founder-led firms (a working first version in about two weeks), and interactive learning content for publishers and EdTech teams: Flipbooks (https://appletpod.com/flipbooks) and Applets (https://appletpod.com/applets). 100+ interactive applets shipped. AppletPod partners with thelaunch.space.
 
 Website: https://appletpod.com
 Book a call: https://cal.com/venkatesh.g/30min

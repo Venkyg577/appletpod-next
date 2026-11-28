@@ -31,3 +31,6 @@ No way to query ChatGPT, Perplexity or AI Overviews from this run. Proxy check u
 - "AppletPod interactive applets": AppletPod not named. Results were generic "what is an applet" pages (Wikipedia, phoenixnap). The brand name collides with the generic term.
 - Q1 variant "custom interactive math applets for textbook publishers studio": not named. Cited: Macmillan Learning (Desmos dynamic figures), KITABOO, Wolfram CDF, Savvas plus Brainingcamp.
 - Q24 variant "turn printed textbook into interactive flipbook with embedded simulations": not named. Cited: Issuu, FlipHTML5, Publuu, Paperturn, FlippingBook. Answer said no platform embeds live simulations, which is exactly the /flipbooks pitch.
+### 2026-11-28 (web search proxy, 2 queries)
+- Q18 variant "AppletPod interactive learning applets studio": AppletPod not named. Results were academic applet pages (MAA, Physlets, Brown Exploratories). Same brand collision as last week.
+- Q11 variant "who builds custom AI agents for small founder-led businesses in Bengaluru": not named. Cited: Srishti GenAI, Lumio AI, The AI Buildrs, Boolean and Beyond, KOGO AI; sources were Clutch, GoodFirms, The Manifest, DesignRush, Peerlist. These directories are the target list for the studio side.

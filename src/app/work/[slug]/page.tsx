@@ -83,9 +83,42 @@ export default async function AppletPage({
     (a) => a.slug !== slug && isVisibleApplet(a.status)
   );
   const cat = getCategoryStyle(applet.category);
+  const pageUrl = `https://appletpod.com/work/${applet.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: applet.title,
+      description: applet.description,
+      url: pageUrl,
+      learningResourceType: "Interactive applet",
+      interactivityType: "active",
+      educationalLevel: applet.grade,
+      about: applet.category,
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      provider: {
+        "@type": "Organization",
+        name: "AppletPod",
+        url: "https://appletpod.com",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Our Work", item: "https://appletpod.com/work" },
+        { "@type": "ListItem", position: 2, name: applet.title, item: pageUrl },
+      ],
+    },
+  ];
 
   return (
     <main className="pt-28 pb-20 px-4 md:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-charcoal/50">
@@ -146,7 +179,7 @@ export default async function AppletPage({
             Want one like this?
           </p>
           <p className="text-white/60 mb-6 max-w-md mx-auto">
-            Tell us your topic and grade level — we&apos;ll build you a free applet, no commitment needed.
+            Tell us your topic and grade level. We&apos;ll build you a free applet, no commitment needed.
           </p>
           <TrackedLink
             href="/free-applet"

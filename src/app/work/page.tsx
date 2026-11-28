@@ -64,7 +64,7 @@ export default function WorkPage() {
             Want an applet built for your content?
           </p>
           <p className="text-charcoal/60 mb-6">
-            We&apos;ll design, storyboard, and build it — ready to embed anywhere.
+            We&apos;ll design, storyboard, and build it, ready to embed anywhere.
           </p>
           <TrackedLink
             href="/free-applet"
